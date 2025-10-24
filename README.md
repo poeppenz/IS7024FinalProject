@@ -10,7 +10,7 @@
 This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking from [ParkWhiz](https://www.parkwhiz.com/) or [Spot Hero](https://spothero.com/).
 
 ## Icon / Logo
-![Project Logo](path/to/logo.png) <!-- Replace with actual path to logo image -->
+<img src="Assets/logo.png" alt="A logo of a blue car on a bright red chair." width="200"/>
 
 ## Storyboard / Wireframe
 

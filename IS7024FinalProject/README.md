@@ -22,9 +22,9 @@ This repository contains the code and documentation for the IS7024 Final Project
 ## Requirements
 
 - [x] Research and select APIs for event and parking data.
-- [ ] Implement API integration for event data.
-- [ ] Implement API integration for parking data.
-- [ ] Finalize a project name.
+- [ ] Implement API integration for event data. SeatGeek
+- [ ] Implement API integration for parking data. ParkWhiz
+- [ ] Finalize a project name. EventFor
 - [ ] Develop frontend components to display events and parking options.
 - [ ] Test the application for usability and performance.
 - [ ] 
@@ -32,6 +32,6 @@ This repository contains the code and documentation for the IS7024 Final Project
 
 ## Data Sources
 
-- [SeatGeek API Documentation](https://seatgeek.com/build)
-- [ParkWhiz API Documentation](https://developer.parkwhiz.com/)
-- [Spot Hero API Documentation](https://spothero.com/developers)
+- [SeatGeek API Documentation](https://seatgeek.com/build) - WIP
+- [ParkWhiz API Documentation](https://developer.parkwhiz.com/) - WIP
+- [Spot Hero API Documentation](https://spothero.com/developers) - No reponse yet

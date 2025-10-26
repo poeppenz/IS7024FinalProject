@@ -1,0 +1,282 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/SeatgeekVenue",
+  "definitions": {
+    "SeatgeekVenue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        },
+        "venues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Venue"
+          }
+        }
+      },
+      "required": [
+        "meta",
+        "venues"
+      ],
+      "title": "SeatgeekVenue"
+    },
+    "Meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "took": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "per_page": {
+          "type": "integer"
+        },
+        "geolocation": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "geolocation",
+        "page",
+        "per_page",
+        "took",
+        "total"
+      ],
+      "title": "Meta"
+    },
+    "Venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "name_v2": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "timezone": {
+          "$ref": "#/definitions/Timezone"
+        },
+        "score": {
+          "type": "number"
+        },
+        "popularity": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/definitions/Country"
+        },
+        "city": {
+          "$ref": "#/definitions/City"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "metro_code": {
+          "type": "integer"
+        },
+        "capacity": {
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {}
+        },
+        "passes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pass"
+          }
+        },
+        "extended_address": {
+          "type": "string"
+        },
+        "display_location": {
+          "$ref": "#/definitions/DisplayLocation"
+        },
+        "access_method": {
+          "type": "null"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "has_upcoming_events": {
+          "type": "boolean"
+        },
+        "num_upcoming_events": {
+          "type": "integer"
+        },
+        "stats": {
+          "$ref": "#/definitions/Stats"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "relative_url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "access_method",
+        "address",
+        "capacity",
+        "city",
+        "country",
+        "display_location",
+        "extended_address",
+        "has_upcoming_events",
+        "id",
+        "links",
+        "location",
+        "metro_code",
+        "name",
+        "name_v2",
+        "num_upcoming_events",
+        "passes",
+        "popularity",
+        "postal_code",
+        "relative_url",
+        "score",
+        "slug",
+        "state",
+        "stats",
+        "timezone",
+        "url"
+      ],
+      "title": "Venue"
+    },
+    "Location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "title": "Location"
+    },
+    "Pass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pass_type": {
+          "$ref": "#/definitions/PassType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "relative_url": {
+          "type": "string"
+        },
+        "stats": {
+          "$ref": "#/definitions/Stats"
+        },
+        "image_rights_message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "image_rights_message",
+        "name",
+        "pass_type",
+        "relative_url",
+        "stats",
+        "url"
+      ],
+      "title": "Pass"
+    },
+    "Stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "event_count"
+      ],
+      "title": "Stats"
+    },
+    "City": {
+      "type": "string",
+      "enum": [
+        "Cincinnati"
+      ],
+      "title": "City"
+    },
+    "Country": {
+      "type": "string",
+      "enum": [
+        "US"
+      ],
+      "title": "Country"
+    },
+    "DisplayLocation": {
+      "type": "string",
+      "enum": [
+        "Cincinnati, OH"
+      ],
+      "title": "DisplayLocation"
+    },
+    "PassType": {
+      "type": "string",
+      "enum": [
+        "PARKING"
+      ],
+      "title": "PassType"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "OH"
+      ],
+      "title": "State"
+    },
+    "Timezone": {
+      "type": "string",
+      "enum": [
+        "America/New_York"
+      ],
+      "title": "Timezone"
+    }
+  }
+}

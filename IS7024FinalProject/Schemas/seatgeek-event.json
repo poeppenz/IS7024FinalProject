@@ -1,0 +1,902 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/SeatgeekEvent",
+  "definitions": {
+    "SeatgeekEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Event"
+          }
+        },
+        "meta": {
+          "$ref": "#/definitions/Meta"
+        }
+      },
+      "required": [
+        "events",
+        "meta"
+      ],
+      "title": "SeatgeekEvent"
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "access_method": {
+          "type": "null"
+        },
+        "announce_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "announcements": {
+          "$ref": "#/definitions/Announcements"
+        },
+        "conditional": {
+          "type": "boolean"
+        },
+        "contingent": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "date_tbd": {
+          "type": "boolean"
+        },
+        "datetime_local": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "datetime_tbd": {
+          "type": "boolean"
+        },
+        "datetime_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        },
+        "onsale": {
+          "type": "null"
+        },
+        "enddatetime_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "event_promotion": {
+          "type": "null"
+        },
+        "game_number": {
+          "type": "integer"
+        },
+        "home_game_number": {
+          "type": "integer"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "integrated": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Integrated"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "is_open": {
+          "type": "boolean"
+        },
+        "is_visible": {
+          "type": "boolean"
+        },
+        "is_visible_override": {
+          "$ref": "#/definitions/IsVisibleOverride"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Link"
+          }
+        },
+        "main_event_id": {
+          "type": "null"
+        },
+        "performers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Performer"
+          }
+        },
+        "performer_order": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PerformerOrder"
+          }
+        },
+        "playoffs": {
+          "type": "null"
+        },
+        "popularity": {
+          "type": "number"
+        },
+        "relative_url": {
+          "type": "string"
+        },
+        "score": {
+          "type": "number"
+        },
+        "short_title": {
+          "type": "string"
+        },
+        "stats": {
+          "$ref": "#/definitions/Announcements"
+        },
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "taxonomies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Taxonomy"
+          }
+        },
+        "ticketmaster": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "tdc_pv_id": {
+          "type": "integer"
+        },
+        "tdc_pvo_id": {
+          "type": "integer"
+        },
+        "time_tbd": {
+          "type": "boolean"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "venue": {
+          "$ref": "#/definitions/Venue"
+        },
+        "visible_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "visible_until_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "open_domain_id": {
+          "$ref": "#/definitions/OpenDomainID"
+        },
+        "open_id": {
+          "$ref": "#/definitions/OpenID"
+        },
+        "type": {
+          "type": "string"
+        },
+        "themes": {
+          "type": "array",
+          "items": {}
+        },
+        "domain_information": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "access_method",
+        "announce_date",
+        "announcements",
+        "conditional",
+        "contingent",
+        "created_at",
+        "date_tbd",
+        "datetime_local",
+        "datetime_tbd",
+        "datetime_utc",
+        "description",
+        "domain_information",
+        "enddatetime_utc",
+        "event_promotion",
+        "game_number",
+        "home_game_number",
+        "id",
+        "integrated",
+        "is_open",
+        "is_visible",
+        "is_visible_override",
+        "links",
+        "main_event_id",
+        "onsale",
+        "open_domain_id",
+        "open_id",
+        "performer_order",
+        "performers",
+        "playoffs",
+        "popularity",
+        "relative_url",
+        "score",
+        "short_title",
+        "stats",
+        "status",
+        "taxonomies",
+        "tdc_pv_id",
+        "tdc_pvo_id",
+        "themes",
+        "ticketmaster",
+        "time_tbd",
+        "title",
+        "type",
+        "url",
+        "venue",
+        "visible_at",
+        "visible_until_utc"
+      ],
+      "title": "Event"
+    },
+    "Announcements": {
+      "type": "object",
+      "additionalProperties": false,
+      "title": "Announcements"
+    },
+    "Integrated": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider_name": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider_id",
+        "provider_name"
+      ],
+      "title": "Integrated"
+    },
+    "Link": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "logos": {
+          "$ref": "#/definitions/Announcements"
+        },
+        "sales": {
+          "type": "array",
+          "items": {}
+        },
+        "link_type": {
+          "$ref": "#/definitions/LinkType"
+        }
+      },
+      "required": [
+        "display_name",
+        "id",
+        "link_type",
+        "logos",
+        "primary",
+        "provider",
+        "sales",
+        "url"
+      ],
+      "title": "Link"
+    },
+    "PerformerOrder": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "ordinal": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "ordinal"
+      ],
+      "title": "PerformerOrder"
+    },
+    "Performer": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "images": {
+          "$ref": "#/definitions/Images"
+        },
+        "divisions": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Division"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "links": {
+          "type": "array",
+          "items": {}
+        },
+        "has_upcoming_events": {
+          "type": "boolean"
+        },
+        "primary": {
+          "type": "boolean"
+        },
+        "stats": {
+          "$ref": "#/definitions/Stats"
+        },
+        "taxonomies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Taxonomy"
+          }
+        },
+        "image_attribution": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "score": {
+          "type": "number"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "home_venue_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "num_upcoming_events": {
+          "type": "integer"
+        },
+        "colors": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Colors"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "image_license": {
+          "type": "string"
+        },
+        "popularity": {
+          "type": "integer"
+        },
+        "home_team": {
+          "type": "boolean"
+        },
+        "location": {
+          "type": "null"
+        },
+        "relative_url": {
+          "type": "string"
+        },
+        "image_rights_message": {
+          "type": "string"
+        },
+        "is_event": {
+          "type": "boolean"
+        },
+        "away_team": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "colors",
+        "divisions",
+        "has_upcoming_events",
+        "home_venue_id",
+        "id",
+        "image",
+        "image_attribution",
+        "image_license",
+        "image_rights_message",
+        "images",
+        "is_event",
+        "links",
+        "location",
+        "name",
+        "num_upcoming_events",
+        "popularity",
+        "relative_url",
+        "score",
+        "short_name",
+        "slug",
+        "stats",
+        "taxonomies",
+        "type",
+        "url"
+      ],
+      "title": "Performer"
+    },
+    "Colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "all": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "iconic": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "all",
+        "iconic",
+        "primary"
+      ],
+      "title": "Colors"
+    },
+    "Division": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "taxonomy_id": {
+          "type": "integer"
+        },
+        "short_name": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "display_type": {
+          "type": "string"
+        },
+        "division_level": {
+          "type": "integer"
+        },
+        "slug": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "display_name",
+        "display_type",
+        "division_level",
+        "short_name",
+        "slug",
+        "taxonomy_id"
+      ],
+      "title": "Division"
+    },
+    "Images": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "huge": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpg"
+          ]
+        }
+      },
+      "required": [
+        "huge"
+      ],
+      "title": "Images"
+    },
+    "Stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "event_count": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "event_count"
+      ],
+      "title": "Stats"
+    },
+    "Taxonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "seo_event_type": {
+          "type": "string"
+        },
+        "rank": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "parent_id",
+        "rank",
+        "seo_event_type"
+      ],
+      "title": "Taxonomy"
+    },
+    "Venue": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "name_v2": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "timezone": {
+          "$ref": "#/definitions/Timezone"
+        },
+        "score": {
+          "type": "number"
+        },
+        "popularity": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "country": {
+          "$ref": "#/definitions/Country"
+        },
+        "city": {
+          "$ref": "#/definitions/City"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "metro_code": {
+          "type": "integer"
+        },
+        "capacity": {
+          "type": "integer"
+        },
+        "links": {
+          "type": "array",
+          "items": {}
+        },
+        "passes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pass"
+          }
+        },
+        "extended_address": {
+          "type": "string"
+        },
+        "display_location": {
+          "$ref": "#/definitions/DisplayLocation"
+        },
+        "access_method": {
+          "type": "null"
+        },
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "has_upcoming_events": {
+          "type": "boolean"
+        },
+        "num_upcoming_events": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "relative_url": {
+          "type": "string"
+        },
+        "sg_market_area": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "access_method",
+        "address",
+        "capacity",
+        "city",
+        "country",
+        "display_location",
+        "extended_address",
+        "has_upcoming_events",
+        "id",
+        "links",
+        "location",
+        "metro_code",
+        "name",
+        "name_v2",
+        "num_upcoming_events",
+        "passes",
+        "popularity",
+        "postal_code",
+        "relative_url",
+        "score",
+        "sg_market_area",
+        "slug",
+        "state",
+        "timezone",
+        "url"
+      ],
+      "title": "Venue"
+    },
+    "Location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "lat": {
+          "type": "number"
+        },
+        "lon": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "lat",
+        "lon"
+      ],
+      "title": "Location"
+    },
+    "Pass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pass_type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ]
+        },
+        "relative_url": {
+          "type": "string"
+        },
+        "stats": {
+          "$ref": "#/definitions/Stats"
+        },
+        "image_rights_message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "image_rights_message",
+        "name",
+        "pass_type",
+        "relative_url",
+        "stats",
+        "url"
+      ],
+      "title": "Pass"
+    },
+    "Meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "geolocation": {
+          "type": "null"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "took": {
+          "type": "integer"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "per_page": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "geolocation",
+        "page",
+        "per_page",
+        "took",
+        "total"
+      ],
+      "title": "Meta"
+    },
+    "IsVisibleOverride": {
+      "type": "string",
+      "enum": [
+        "UNSET",
+        "VISIBLE"
+      ],
+      "title": "IsVisibleOverride"
+    },
+    "LinkType": {
+      "type": "string",
+      "enum": [
+        "ID"
+      ],
+      "title": "LinkType"
+    },
+    "OpenDomainID": {
+      "type": "string",
+      "enum": [
+        "",
+        "do_dWtQRAq62cjBJjeXUN5zwwKtzeGrN9"
+      ],
+      "title": "OpenDomainID"
+    },
+    "OpenID": {
+      "type": "string",
+      "enum": [
+        "",
+        "e_2rt8KMEndiBk4z2RclEPRLnF3xQZrN"
+      ],
+      "title": "OpenID"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "normal"
+      ],
+      "title": "Status"
+    },
+    "City": {
+      "type": "string",
+      "enum": [
+        "Cincinnati",
+        "Morgantown"
+      ],
+      "title": "City"
+    },
+    "Country": {
+      "type": "string",
+      "enum": [
+        "US"
+      ],
+      "title": "Country"
+    },
+    "DisplayLocation": {
+      "type": "string",
+      "enum": [
+        "Cincinnati, OH",
+        "Morgantown, WV"
+      ],
+      "title": "DisplayLocation"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "OH",
+        "WV"
+      ],
+      "title": "State"
+    },
+    "Timezone": {
+      "type": "string",
+      "enum": [
+        "America/New_York"
+      ],
+      "title": "Timezone"
+    }
+  }
+}

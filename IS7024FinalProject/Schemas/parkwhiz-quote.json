@@ -1,0 +1,863 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/ParkingQuoteElement"
+  },
+  "definitions": {
+    "ParkingQuoteElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "location_id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "type": {
+          "$ref": "#/definitions/ParkingQuoteType"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "min_start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "max_end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "distance": {
+          "$ref": "#/definitions/Distance"
+        },
+        "purchase_options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PurchaseOption"
+          }
+        },
+        "seller_id": {
+          "type": "integer"
+        },
+        "quote_type": {
+          "$ref": "#/definitions/QuoteType"
+        },
+        "name": {
+          "type": "string"
+        },
+        "_embedded": {
+          "$ref": "#/definitions/Embedded"
+        }
+      },
+      "required": [
+        "_embedded",
+        "distance",
+        "end_time",
+        "location_id",
+        "max_end",
+        "min_start",
+        "name",
+        "purchase_options",
+        "quote_type",
+        "seller_id",
+        "start_time",
+        "type"
+      ],
+      "title": "ParkingQuoteElement"
+    },
+    "Embedded": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pw:location": {
+          "$ref": "#/definitions/PwLocation"
+        }
+      },
+      "required": [
+        "pw:location"
+      ],
+      "title": "Embedded"
+    },
+    "PwLocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "city": {
+          "$ref": "#/definitions/City"
+        },
+        "state": {
+          "$ref": "#/definitions/State"
+        },
+        "country": {
+          "$ref": "#/definitions/Country"
+        },
+        "currency": {
+          "$ref": "#/definitions/Currency"
+        },
+        "postal_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "entrances": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Entrance"
+          }
+        },
+        "photos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Photo"
+          }
+        },
+        "_links": {
+          "$ref": "#/definitions/PwLocationLinks"
+        }
+      },
+      "required": [
+        "_links",
+        "address1",
+        "city",
+        "country",
+        "currency",
+        "entrances",
+        "id",
+        "name",
+        "photos",
+        "postal_code",
+        "state"
+      ],
+      "title": "PwLocation"
+    },
+    "PwLocationLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/PwQuotes"
+        },
+        "pw:quotes": {
+          "$ref": "#/definitions/PwQuotes"
+        },
+        "pw:reviews": {
+          "$ref": "#/definitions/PwQuotes"
+        },
+        "site:purchase": {
+          "type": "null"
+        },
+        "curies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Cury"
+          }
+        }
+      },
+      "required": [
+        "curies",
+        "pw:quotes",
+        "pw:reviews",
+        "self",
+        "site:purchase"
+      ],
+      "title": "PwLocationLinks"
+    },
+    "Cury": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/CuryName"
+        },
+        "href": {
+          "$ref": "#/definitions/Href"
+        },
+        "templated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "href",
+        "name",
+        "templated"
+      ],
+      "title": "Cury"
+    },
+    "PwQuotes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "href": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "href"
+      ],
+      "title": "PwQuotes"
+    },
+    "Entrance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          }
+        }
+      },
+      "required": [
+        "coordinates"
+      ],
+      "title": "Entrance"
+    },
+    "Photo": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "position": {
+          "type": "integer"
+        },
+        "sizes": {
+          "$ref": "#/definitions/Sizes"
+        }
+      },
+      "required": [
+        "position",
+        "sizes"
+      ],
+      "title": "Photo"
+    },
+    "Sizes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "original": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "logo": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "gallery": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "gallery_thumb": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "search_thumb": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "res_ticket": {
+          "$ref": "#/definitions/Gallery"
+        },
+        "hub_frontpage": {
+          "$ref": "#/definitions/Gallery"
+        }
+      },
+      "required": [
+        "gallery",
+        "gallery_thumb",
+        "hub_frontpage",
+        "logo",
+        "original",
+        "res_ticket",
+        "search_thumb"
+      ],
+      "title": "Sizes"
+    },
+    "Gallery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "URL": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".jpeg",
+            ".jpg",
+            ".png"
+          ]
+        },
+        "width": {
+          "type": "integer"
+        },
+        "height": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "URL",
+        "height",
+        "width"
+      ],
+      "title": "Gallery"
+    },
+    "Distance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "straight_line": {
+          "$ref": "#/definitions/StraightLine"
+        }
+      },
+      "required": [
+        "straight_line"
+      ],
+      "title": "Distance"
+    },
+    "StraightLine": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meters": {
+          "type": "integer"
+        },
+        "feet": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "feet",
+        "meters"
+      ],
+      "title": "StraightLine"
+    },
+    "PurchaseOption": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "min_start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "max_end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "base_price": {
+          "$ref": "#/definitions/BasePriceClass"
+        },
+        "price": {
+          "$ref": "#/definitions/BasePriceClass"
+        },
+        "display": {
+          "$ref": "#/definitions/PurchaseOptionDisplay"
+        },
+        "fees": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Fee"
+          }
+        },
+        "pricing_segments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingSegment"
+          }
+        },
+        "space_availability": {
+          "$ref": "#/definitions/SpaceAvailability"
+        },
+        "validation": {
+          "$ref": "#/definitions/Validation"
+        },
+        "cancellable_status": {
+          "$ref": "#/definitions/CancellableStatus"
+        },
+        "disclaimers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "amenities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Amenity"
+          }
+        },
+        "price_advisory": {
+          "$ref": "#/definitions/PriceAdvisory"
+        },
+        "_links": {
+          "$ref": "#/definitions/PurchaseOptionLinks"
+        }
+      },
+      "required": [
+        "_links",
+        "amenities",
+        "base_price",
+        "cancellable_status",
+        "disclaimers",
+        "display",
+        "end_time",
+        "id",
+        "max_end",
+        "min_start",
+        "price",
+        "price_advisory",
+        "pricing_segments",
+        "space_availability",
+        "start_time",
+        "validation"
+      ],
+      "title": "PurchaseOption"
+    },
+    "PurchaseOptionLinks": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "site:purchase": {
+          "$ref": "#/definitions/PwQuotes"
+        },
+        "curies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Cury"
+          }
+        }
+      },
+      "required": [
+        "curies",
+        "site:purchase"
+      ],
+      "title": "PurchaseOptionLinks"
+    },
+    "Amenity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/AmenityName"
+        },
+        "key": {
+          "$ref": "#/definitions/Key"
+        },
+        "description": {
+          "$ref": "#/definitions/Description"
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "description",
+        "enabled",
+        "key",
+        "name",
+        "visible"
+      ],
+      "title": "Amenity"
+    },
+    "BasePriceClass": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "USD": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "USD"
+      ],
+      "title": "BasePriceClass"
+    },
+    "CancellableStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cancellable_now": {
+          "type": "boolean"
+        },
+        "code": {
+          "$ref": "#/definitions/Code"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "cancellable_now",
+        "code",
+        "message"
+      ],
+      "title": "CancellableStatus"
+    },
+    "PurchaseOptionDisplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "price": {
+          "$ref": "#/definitions/PriceEnum"
+        }
+      },
+      "required": [
+        "price"
+      ],
+      "title": "PurchaseOptionDisplay"
+    },
+    "Fee": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "price": {
+          "$ref": "#/definitions/BasePriceClass"
+        },
+        "type": {
+          "$ref": "#/definitions/FeeType"
+        },
+        "label": {
+          "$ref": "#/definitions/Label"
+        },
+        "parent_category": {
+          "$ref": "#/definitions/Label"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "description",
+        "label",
+        "parent_category",
+        "price",
+        "type"
+      ],
+      "title": "Fee"
+    },
+    "PricingSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "start_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "end_time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "event": {
+          "$ref": "#/definitions/Event"
+        },
+        "space_availability": {
+          "$ref": "#/definitions/SpaceAvailability"
+        },
+        "pricing_type": {
+          "$ref": "#/definitions/PricingType"
+        },
+        "purchase_limit": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "end_time",
+        "event",
+        "id",
+        "pricing_type",
+        "space_availability",
+        "start_time"
+      ],
+      "title": "PricingSegment"
+    },
+    "Event": {
+      "type": "object",
+      "additionalProperties": false,
+      "title": "Event"
+    },
+    "SpaceAvailability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/Status"
+        },
+        "spaces_remaining": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "title": "SpaceAvailability"
+    },
+    "Validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "require_license_plate": {
+          "type": "boolean"
+        },
+        "display": {
+          "$ref": "#/definitions/ValidationDisplay"
+        },
+        "validation_steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationStep"
+          }
+        }
+      },
+      "required": [
+        "display",
+        "require_license_plate",
+        "validation_steps"
+      ],
+      "title": "Validation"
+    },
+    "ValidationDisplay": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "scan_code": {
+          "$ref": "#/definitions/ScanCode"
+        }
+      },
+      "required": [
+        "scan_code"
+      ],
+      "title": "ValidationDisplay"
+    },
+    "ValidationStep": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "instructions": {
+          "type": "string"
+        },
+        "icon": {
+          "$ref": "#/definitions/Icon"
+        }
+      },
+      "required": [
+        "icon",
+        "instructions"
+      ],
+      "title": "ValidationStep"
+    },
+    "Icon": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "format": "uri",
+          "qt-uri-protocols": [
+            "https"
+          ],
+          "qt-uri-extensions": [
+            ".png"
+          ]
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "title": "Icon"
+    },
+    "Href": {
+      "type": "string",
+      "enum": [
+        "https://api.parkwhiz.com/v4/{rel}",
+        "https://www.parkwhiz.com/{rel}"
+      ],
+      "title": "Href"
+    },
+    "CuryName": {
+      "type": "string",
+      "enum": [
+        "pw",
+        "site"
+      ],
+      "title": "CuryName"
+    },
+    "City": {
+      "type": "string",
+      "enum": [
+        "Cincinnati",
+        "Covington",
+        "Newport"
+      ],
+      "title": "City"
+    },
+    "Country": {
+      "type": "string",
+      "enum": [
+        "US"
+      ],
+      "title": "Country"
+    },
+    "Currency": {
+      "type": "string",
+      "enum": [
+        "USD"
+      ],
+      "title": "Currency"
+    },
+    "State": {
+      "type": "string",
+      "enum": [
+        "OH",
+        "KY"
+      ],
+      "title": "State"
+    },
+    "Description": {
+      "type": "string",
+      "enum": [
+        "Guaranteed to be unobstructed",
+        "Printed pass",
+        "Attended",
+        "Covered",
+        "Security",
+        "Valet",
+        "Restrooms",
+        "Reentry allowed",
+        "Accessible",
+        "Electric Car Charging"
+      ],
+      "title": "Description"
+    },
+    "Key": {
+      "type": "string",
+      "enum": [
+        "unobstructed",
+        "printed_pass",
+        "attended",
+        "indoor",
+        "security",
+        "valet",
+        "restrooms",
+        "reentry",
+        "handicap",
+        "vehicle_charging"
+      ],
+      "title": "Key"
+    },
+    "AmenityName": {
+      "type": "string",
+      "enum": [
+        "Unobstructed",
+        "Printed Pass",
+        "Attended",
+        "Covered",
+        "Security",
+        "Valet",
+        "Restrooms",
+        "Reentry Allowed",
+        "Accessible",
+        "Electric Car Charging"
+      ],
+      "title": "AmenityName"
+    },
+    "Code": {
+      "type": "string",
+      "enum": [
+        "cancellable_until_start_time"
+      ],
+      "title": "Code"
+    },
+    "PriceEnum": {
+      "type": "string",
+      "enum": [
+        "price"
+      ],
+      "title": "PriceEnum"
+    },
+    "Label": {
+      "type": "string",
+      "enum": [
+        "Service Fee"
+      ],
+      "title": "Label"
+    },
+    "FeeType": {
+      "type": "string",
+      "enum": [
+        "convenience_fee"
+      ],
+      "title": "FeeType"
+    },
+    "PriceAdvisory": {
+      "type": "string",
+      "enum": [
+        "None"
+      ],
+      "title": "PriceAdvisory"
+    },
+    "PricingType": {
+      "type": "string",
+      "enum": [
+        "TransientPricing"
+      ],
+      "title": "PricingType"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "available",
+        "limited"
+      ],
+      "title": "Status"
+    },
+    "ScanCode": {
+      "type": "string",
+      "enum": [
+        "hidden",
+        "optional",
+        "required"
+      ],
+      "title": "ScanCode"
+    },
+    "QuoteType": {
+      "type": "string",
+      "enum": [
+        "transient"
+      ],
+      "title": "QuoteType"
+    },
+    "ParkingQuoteType": {
+      "type": "string",
+      "enum": [
+        "offstreet"
+      ],
+      "title": "ParkingQuoteType"
+    }
+  }
+}

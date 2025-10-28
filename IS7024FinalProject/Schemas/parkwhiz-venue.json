@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/VenueElement"
+  },
+  "definitions": {
+    "VenueElement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address1": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postal_code": {
+          "type": "string",
+          "format": "integer"
+        },
+        "distance": {
+          "$ref": "#/definitions/Distance"
+        }
+      },
+      "required": [],
+      "title": "VenueElement"
+    },
+    "Distance": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "meters": {
+          "type": "number"
+        },
+        "miles": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "meters",
+        "miles"
+      ],
+      "title": "Distance"
+    }
+  }
+}

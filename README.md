@@ -21,15 +21,28 @@ This repository contains the code and documentation for the IS7024 Final Project
 
 
 ## Requirements
-
+### Technical Requirements
 - [x] Research and select APIs for event and parking data.
 - [ ] Implement API integration for event data.
 - [ ] Implement API integration for parking data.
 - [ ] Finalize a project name.
 - [ ] Develop frontend components to display events and parking options.
 - [ ] Test the application for usability and performance.
-- [ ] 
 
+### Functional Requirements
+#### Requirement 1:
+As a user planning to attend an upcoming event, I want to be able to see what parking is available.
+
+##### Examples
+Example 1:
+**Given** feeds of events and parking are available
+**When** I search for "Bengals"
+**Then** I should get a result for "246 W. Rivercenter Blvd."
+
+Example 2:
+**Given** feeds of events and parking are available
+**When** I search for "qazwsxedcrfv2"
+**Then** I should get no results.
 
 ## Data Sources
 

@@ -24,7 +24,8 @@ WIP
 - As an event goer, I would like to find my event.
   - Given I am on the homepage, I would like to search for an event by name, date, or location. 
 - As an event goer, I would like to click on a link to purchase parking.
-  - Given I have selected a parking option, I would like to be redirected to the parking provider's website to complete my purchase. 
+  - Given I have selected a parking option, I would like to be redirected to the parking provider's website to complete my purchase.
+    
 
 ## Tasks
 
@@ -35,6 +36,20 @@ WIP
 - [ ] Develop frontend components to display events and parking options.
 - [ ] Test the application for usability and performance.
 - [ ] Deploy the application to a Azure.
+## Examples: 1.
+Event and parking search data are available and accessible.
+# Assumptions
+Events names and locations are stated clearly 
+Closest parking, spot spaces well stated.
+
+Provide: Location
+ Seat: Available
+When I search for “Seat Greek”
+Then I should receive at least one result with these attributes:
+Location: Paycor Stadium Cincinnati
+Availability: Section 114, Row 1
+Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
+ 
 
 
 ## Data Sources

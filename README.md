@@ -1,19 +1,14 @@
 # IS7024 Final Project
 
-## Members
-
-- Member 1: Nathan Poeppelman - poeppenz@ucmail.uc.edu
-- Member 2: Michael Seitz - seitzme@mail.uc.edu
-- Member 3: Zachary Durst - durstzd@mail.uc.edu
-- Member 4: Cassandra Horton - hortonco@mail.uc.edu
-
 ## Introduction
-This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking from [ParkWhiz](https://www.parkwhiz.com/) or [Spot Hero](https://spothero.com/).
+This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking data from [ParkWhiz](https://www.parkwhiz.com/) to show convenient parking locations near events.
+
 
 ## Icon / Logo
-<img src="Assets/logo.png" alt="A logo of a blue car on a bright red chair." width="200"/>
+![Project Logo](path/to/logo.png) <!-- Replace with actual path to logo image -->
 
 ## Storyboard / Wireframe
+WIP
 
 ## GitHub Project
 
@@ -21,31 +16,30 @@ This repository contains the code and documentation for the IS7024 Final Project
 
 
 ## Requirements
-### Technical Requirements
+
 - [x] Research and select APIs for event and parking data.
-- [ ] Implement API integration for event data.
-- [ ] Implement API integration for parking data.
-- [ ] Finalize a project name.
+- [X] Implement API integration for event data. SeatGeek
+- [X] Implement API integration for parking data. ParkWhiz
+- [ ] Finalize a project name. EventParking
 - [ ] Develop frontend components to display events and parking options.
 - [ ] Test the application for usability and performance.
+- [ ] Deploy the application to a Azure.
 
-### Functional Requirements
-#### Requirement 1:
-As a user planning to attend an upcoming event, I want to be able to see what parking is available.
-
-##### Examples
-Example 1:
-**Given** feeds of events and parking are available
-**When** I search for "Bengals"
-**Then** I should get a result for "246 W. Rivercenter Blvd."
-
-Example 2:
-**Given** feeds of events and parking are available
-**When** I search for "qazwsxedcrfv2"
-**Then** I should get no results.
 
 ## Data Sources
 
-- [SeatGeek API Documentation](https://seatgeek.com/build)
-- [ParkWhiz API Documentation](https://developer.parkwhiz.com/)
-- [Spot Hero API Documentation](https://spothero.com/developers)
+- [SeatGeek API Documentation](https://seatgeek.com/build) - Approved
+- [ParkWhiz API Documentation](https://developer.parkwhiz.com/) - Approved
+- [Spot Hero API Documentation](https://spothero.com/developers) - Rejected
+
+
+## Members
+
+- Nathan Poeppelman - poeppenz@ucmail.uc.edu
+- Michael Seitz - seitzme@mail.uc.edu
+- Zachary Durst - durstzd@mail.uc.edu
+- Cassandra Horton - hortonco@mail.uc.edu
+- Monica Mwangi - mwangima@mail.uc.edu
+
+## Weekly Meetings
+- Meetings will be held every Tuesday at 9 PM via Teams.

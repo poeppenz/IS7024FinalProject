@@ -17,6 +17,17 @@ WIP
 
 ## Requirements
 
+- As an event goer, I want to quickly find close affordable parking for my upcoming event.
+  - Given I have selected an event, I want to see parking options near the event.
+- As an event goer, I would like to see parking options with prices.
+  - Given I have selected an event, I would like to see parking options with available times that match my event time.
+- As an event goer, I would like to find my event.
+  - Given I am on the homepage, I would like to search for an event by name, date, or location. 
+- As an event goer, I would like to click on a link to purchase parking.
+  - Given I have selected a parking option, I would like to be redirected to the parking provider's website to complete my purchase. 
+
+## Tasks
+
 - [x] Research and select APIs for event and parking data.
 - [X] Implement API integration for event data. SeatGeek
 - [X] Implement API integration for parking data. ParkWhiz

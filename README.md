@@ -42,12 +42,17 @@ Event and parking search data are available and accessible.
 Events names and locations are stated clearly 
 Closest parking, spot spaces well stated.
 
-Provide: Location
- Seat: Available
-When I search for “Seat Greek”
+**Provide**: Location
+
+**Seat**: Available
+
+**When** I search for “Seat Greek”
 Then I should receive at least one result with these attributes:
+
 Location: Paycor Stadium Cincinnati
+
 Availability: Section 114, Row 1
+
 Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
  
 

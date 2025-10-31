@@ -38,7 +38,7 @@ WIP
 - [ ] Deploy the application to a Azure.
 ## Examples: 1.
 Event and parking search data are available and accessible.
-# Assumptions
+### Assumptions
 Events names and locations are stated clearly 
 Closest parking, spot spaces well stated.
 

@@ -12,7 +12,8 @@ WIP
 
 ## GitHub Project
 
-- [GitHub Project Board](https://github.com/poeppenz/IS7024FinalProject)
+- [GitHub Repository](https://github.com/poeppenz/IS7024FinalProject)
+- [GitHub Project Board](https://github.com/users/poeppenz/projects/1)
 
 
 ## Requirements

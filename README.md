@@ -5,10 +5,13 @@ This repository contains the code and documentation for the IS7024 Final Project
 
 
 ## Icon / Logo
-<img src="Assets/logo.png" alt="A logo of a blue car on a bright red chair." width="200"/>
+<img src="Assets/logo/logo.png" alt="A logo of a blue car on a bright red chair." width="200"/>
 
-## Storyboard / Wireframe
-WIP
+## Storyboard / Wireframe  
+
+<img src="Assets/documentation/wireframes/wireframes.png" alt="An image of wireframes for Home, Event Search, Event Page, Purchase Modal, and Purchase Modal Result" width="800"/>  
+ 
+(click for full image size)  
 
 ## GitHub Project
 

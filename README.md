@@ -78,10 +78,10 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 
 ## Members
 
-- Nathan Poeppelman - poeppenz@ucmail.uc.edu - API Manager
+- Nathan Poeppelman - API Manager - poeppenz@ucmail.uc.edu
 - Michael Seitz - seitzme@mail.uc.edu
 - Zachary Durst - durstzd@mail.uc.edu
-- Cassandra Horton - hortonco@mail.uc.edu
+- Cassandra Horton - UX/UI Designer - hortonco@mail.uc.edu
 - Monica Mwangi - mwangima@mail.uc.edu
 
 ## Weekly Meetings

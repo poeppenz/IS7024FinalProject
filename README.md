@@ -87,7 +87,7 @@ Assignments still TBD
 
 - Nathan Poeppelman - API Manager - poeppenz@ucmail.uc.edu
 - Michael Seitz - QA - seitzme@mail.uc.edu
-- Zachary Durst - durstzd@mail.uc.edu
+- Zachary Durst - Azure/Operations - durstzd@mail.uc.edu
 - Cassandra Horton - UX/UI Designer - hortonco@mail.uc.edu
 - Monica Mwangi - mwangima@mail.uc.edu
 

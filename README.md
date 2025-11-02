@@ -76,12 +76,12 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 - [Spot Hero API Documentation](https://spothero.com/developers) - Rejected
 
 ## Roles
-Assignments still TBD
--Project Manager
--Tester/QA
--Azure tech
--Usability
--UX/UI design
+Assignments still TBD  
+-Project Manager  
+-Tester/QA  
+-Azure tech  
+-Usability  
+-UX/UI design  
 
 ## Members
 

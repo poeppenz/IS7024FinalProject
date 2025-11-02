@@ -7,11 +7,18 @@ namespace IS7024FinalProject.Pages.API
 {
     public class ParkwhizModel : PageModel
     {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public ParkwhizModel(IHttpClientFactory httpClientFactory)
+        {
+            _httpClientFactory = httpClientFactory;
+        }
+
         public async Task<IActionResult> OnGetAsync()
         {
             //https://developer.parkwhiz.com/v4/#price-quotes-and-locations
 
-            var client = new HttpClient();
+            var client = _httpClientFactory.CreateClient();
             var requestUrl = "https://api.parkwhiz.com/v4/venues?&q=coordinates:39.103100,-84.512000";
 
             var response = await client.GetAsync(requestUrl);

@@ -1,0 +1,41 @@
+﻿@page
+@model IS7024FinalProject.Pages.EventSearchModel
+@{
+    ViewData["Title"] = "Event Search";
+}
+
+<head>
+    <link rel="stylesheet" href="site.css" type="text/css" />
+</head>
+
+<body>
+    <div id="subbanner" class="fullwidth">
+        <h1>Project Name</h1>
+    </div>
+    <div id="search">
+        <form action="/search" method="get">
+            <input type="search" id="search-input" name="query" placeholder="Search an Event...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div id="eventcontainer" class="fullwidth">
+        <div class="eventdata">
+            <!-- Placeholder for Bootstrap Card -->
+            <h3>Event Name</h3>
+            <p>Event Date and Time</p>
+            <p>Event Location</p>
+        </div>
+        <div class="eventdata">
+            <!-- Placeholder for Bootstrap Card -->
+            <h3>Event Name</h3>
+            <p>Event Date and Time</p>
+            <p>Event Location</p>
+        </div>
+        <div class="eventdata">
+            <!-- Placeholder for Bootstrap Card -->
+            <h3>Event Name</h3>
+            <p>Event Date and Time</p>
+            <p>Event Location</p>
+        </div>
+    </div>
+</body>

@@ -1,4 +1,4 @@
-# IS7024 Final Project
+# EventParking
 
 ## Introduction
 This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking data from [ParkWhiz](https://www.parkwhiz.com/) to show convenient parking locations near events.
@@ -89,13 +89,20 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 - [ParkWhiz API Documentation](https://developer.parkwhiz.com/) - Approved
 - [Spot Hero API Documentation](https://spothero.com/developers) - Rejected
 
+## Roles
+Assignments still TBD  
+-Project Manager  
+-Tester/QA  
+-Azure tech  
+-Usability  
+-UX/UI design  
 
 ## Members
 
-- Nathan Poeppelman - poeppenz@ucmail.uc.edu
-- Michael Seitz - seitzme@mail.uc.edu
-- Zachary Durst - durstzd@mail.uc.edu
-- Cassandra Horton - hortonco@mail.uc.edu
+- Nathan Poeppelman - API Manager - poeppenz@ucmail.uc.edu
+- Michael Seitz - QA - seitzme@mail.uc.edu
+- Zachary Durst - Azure/Operations - durstzd@mail.uc.edu
+- Cassandra Horton - UX/UI Designer - hortonco@mail.uc.edu
 - Monica Mwangi - mwangima@mail.uc.edu
 
 ## Weekly Meetings

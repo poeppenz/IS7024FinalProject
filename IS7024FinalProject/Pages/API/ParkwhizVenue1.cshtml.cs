@@ -6,35 +6,61 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace IS7024FinalProject.Pages.API
 {
-    public class ParkwhizVenueModel : PageModel
+    public class ParkwhizVenue1Model : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
 
-        public ParkwhizVenueModel(IHttpClientFactory httpClientFactory)
+        public ParkwhizVenue1Model(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }
 
+        // Accept coordinates via query string, e.g. /API/ParkwhizVenue1?Lat=39.1031&Lon=-84.5120
+        [BindProperty(SupportsGet = true)]
+        public double? Lat { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public double? Lon { get; set; }
+
+        // Exposed to the view
         public List<VenueElement> Venues { get; private set; } = new();
+
+        // The final request URL used (helpful for debugging)
+        public string RequestUrl { get; private set; } = string.Empty;
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var requestUrl = "https://api.parkwhiz.com/v4/venues?&q=coordinates:39.103100,-84.512000";
+            // default coordinates if none provided
+            var lat = Lat ?? 39.103100;
+            var lon = Lon ?? -84.512000;
+
+            // Build the Parkwhiz "q" value as "coordinates:lat,lon"
+            var qValue = $"coordinates:{lat:F6},{lon:F6}";
+
+            // Build request URL using QueryHelpers to ensure proper encoding
+            var baseUrl = "https://api.parkwhiz.com/v4/venues";
+            var query = new Dictionary<string, string?>()
+            {
+                ["q"] = qValue
+            };
+
+            RequestUrl = QueryHelpers.AddQueryString(baseUrl, query);
 
             try
             {
                 var client = _httpClientFactory.CreateClient();
-                var json = await client.GetStringAsync(requestUrl);
+                var json = await client.GetStringAsync(RequestUrl);
 
                 var options = new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 };
 
-                // The schema indicates the response is an array of VenueElement
+                // Deserialize to the schema-defined array of venues
                 var venues = JsonSerializer.Deserialize<List<VenueElement>>(json, options);
                 if (venues != null)
                 {
@@ -58,7 +84,7 @@ namespace IS7024FinalProject.Pages.API
         }
     }
 
-    // DTOs generated from the provided schema (minimal fields used in the table)
+    // DTOs (same as schema)
     public class VenueElement
     {
         [JsonPropertyName("id")]

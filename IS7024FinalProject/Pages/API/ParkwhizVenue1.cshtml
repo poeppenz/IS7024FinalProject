@@ -1,10 +1,13 @@
 ﻿@page
-@model IS7024FinalProject.Pages.API.ParkwhizVenueModel
+@model IS7024FinalProject.Pages.API.ParkwhizVenue1Model
 @{
     ViewData["Title"] = "Parkwhiz Venues — Nearby";
 }
 
 <h2>@ViewData["Title"]</h2>
+
+<p class="text-muted">Coordinates used: <strong>@(Model.Lat ?? 39.103100)</strong>, <strong>@(Model.Lon ?? -84.512000)</strong></p>
+<p class="small text-muted">Request: <code>@Model.RequestUrl</code></p>
 
 @if (Model.Venues == null || Model.Venues.Count == 0)
 {
@@ -37,4 +40,5 @@ else
             }
         </tbody>
     </table>
+}
 }

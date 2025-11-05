@@ -10,7 +10,7 @@
 
 <body>
     <div id="banner" class="fullwidth">
-        <h1>Project Name</h1>
+        <h1>Find My Darn Parking</h1>
         <div id="search">
             <form action="/search" method="get">
                 <input type="search" id="search-input" name="query" placeholder="Search an Event...">
@@ -20,7 +20,7 @@
     </div>
     <div id="support" class="fullwidth">
         <div id="broll" class="supportsection">
-            <img src="https://github.com/poeppenz/IS7024FinalProject/blob/master/Assets/logo.png" />
+            <img src="~/logo_300x300.png" />
         </div>
         <div id="usage" class="supportsection">
             <h3>How to Use</h3>
@@ -28,6 +28,25 @@
                 <li>Search an event to find parking</li>
                 <li>Test Test Test</li>
             </ul>
+        </div>
+        <div>
+            <h1>Search Parkwhiz Venues</h1>
+
+            <form method="get" asp-page="/API/ParkwhizVenue1" class="row g-2 align-items-center">
+                <div class="col-auto">
+                    <label class="form-label visually-hidden" for="Lat">Latitude</label>
+                    <input id="Lat" name="Lat" class="form-control" placeholder="Latitude (e.g. 39.103100)" value="39.103100" />
+                </div>
+                <div class="col-auto">
+                    <label class="form-label visually-hidden" for="Lon">Longitude</label>
+                    <input id="Lon" name="Lon" class="form-control" placeholder="Longitude (e.g. -84.512000)" value="-84.512000" />
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+
+            <p class="mt-3 text-muted">Enter GPS coordinates and press Search. You'll be taken to the Parkwhiz Venues page with the coordinates in the URL.</p>
         </div>
     </div>
 </body>

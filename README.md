@@ -69,6 +69,20 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
  
 
 
+## Criteria checklist
+- [X] Two external API sources
+- [ ] One AI from another group
+- [X] Common Github repository
+- [ ] Code in good form
+- [ ] Do something extra
+- [ ] Code Review recommendations implemented and explained
+- [ ] Hosted in Azure
+- [ ] Show results of JSON service data in readable form
+- [ ] Produce data via REST/JSON with an OpenAPI or JSON Schema
+- [ ] Gather data from user
+- [ ] Site looks good - CSS, images, theme
+- [ ] Accessible
+
 ## Data Sources
 
 - [SeatGeek API Documentation](https://seatgeek.com/build) - Approved

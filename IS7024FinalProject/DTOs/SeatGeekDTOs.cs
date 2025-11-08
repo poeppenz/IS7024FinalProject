@@ -15,6 +15,15 @@ namespace IS7024FinalProject.DTOs
     {
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
+
+        // NEW: Property for the main performer image URL
+        [JsonPropertyName("image")]
+        public string? Image { get; set; }
+
+        // Helper property to safely return the image URL or a placeholder
+        public string DisplayImageUrl => string.IsNullOrEmpty(Image) 
+            ? "https://placehold.co/400x150/e9ecef/495057?text=No+Image" 
+            : Image;
     }
 
     public class Location
@@ -77,6 +86,18 @@ namespace IS7024FinalProject.DTOs
                 return $"{names[0]} vs. {names[1]}";
             }
             return string.Join(" and ", names);
+        }
+        
+        // NEW: Helper to get the image URL of the primary performer (the first one in the list)
+        public string GetPrimaryPerformerImageUrl()
+        {
+            // If the list is null or empty, use a generic placeholder
+            if (Performers == null || Performers.Count == 0)
+            {
+                return "https://placehold.co/400x150/e9ecef/495057?text=No+Image";
+            }
+            // Use the DisplayImageUrl property from the first performer
+            return Performers[0].DisplayImageUrl;
         }
     }
 }

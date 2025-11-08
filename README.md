@@ -93,9 +93,9 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 Assignments still TBD  
 -Project Manager  
 -Tester/QA  
--Azure tech  
--Usability  
+-Azure tech    
 -UX/UI design  
+-Web design (Http/css)
 
 ## Members
 
@@ -103,7 +103,7 @@ Assignments still TBD
 - Michael Seitz - QA - seitzme@mail.uc.edu
 - Zachary Durst - Azure/Operations - durstzd@mail.uc.edu
 - Cassandra Horton - UX/UI Designer - hortonco@mail.uc.edu
-- Monica Mwangi - mwangima@mail.uc.edu
+- Monica Mwangi - Web design (Http/css)- mwangima@mail.uc.edu
 
 ## Weekly Meetings
 - Meetings will be held every Tuesday at 9 PM via Teams.

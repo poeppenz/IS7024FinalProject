@@ -42,7 +42,7 @@ else if (Model.Events != null && Model.Events.Count > 0)
 @foreach (var eventItem in Model.Events)
 {
 // Construct the link for the next page, passing the necessary details (ID and location for parking)
-var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}&lat={eventItem.Venue.Location.Lat}&lon={eventItem.Venue.Location.Lon}";
+var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}";
 
 <div class="col">
 <a href="@parkingLink" class="text-decoration-none">

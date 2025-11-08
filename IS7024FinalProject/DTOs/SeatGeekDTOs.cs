@@ -16,7 +16,6 @@ namespace IS7024FinalProject.DTOs
         [JsonPropertyName("name")]
         public string Name { get; set; } = string.Empty;
 
-        // NEW: Property for the main performer image URL
         [JsonPropertyName("image")]
         public string? Image { get; set; }
 
@@ -61,11 +60,9 @@ namespace IS7024FinalProject.DTOs
         [JsonPropertyName("datetime_local")]
         public DateTime DatetimeLocal { get; set; }
 
-        // NEW: UTC start time for accurate API calls
         [JsonPropertyName("datetime_utc")]
         public DateTime DatetimeUtc { get; set; }
 
-        // NEW: Optional UTC end time for more accurate parking exit time
         [JsonPropertyName("enddatetime_utc")]
         public DateTime? EndDatetimeUtc { get; set; }
 
@@ -88,7 +85,7 @@ namespace IS7024FinalProject.DTOs
             return string.Join(" and ", names);
         }
         
-        // NEW: Helper to get the image URL of the primary performer (the first one in the list)
+        // Helper to get the image URL of the primary performer (the first one in the list)
         public string GetPrimaryPerformerImageUrl()
         {
             // If the list is null or empty, use a generic placeholder

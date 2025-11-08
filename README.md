@@ -95,7 +95,7 @@ Assignments still TBD
 -Tester/QA  
 -Azure tech    
 -UX/UI design  
--Web/http/css design
+-Web design (Http/css)
 
 ## Members
 
@@ -103,7 +103,7 @@ Assignments still TBD
 - Michael Seitz - QA - seitzme@mail.uc.edu
 - Zachary Durst - Azure/Operations - durstzd@mail.uc.edu
 - Cassandra Horton - UX/UI Designer - hortonco@mail.uc.edu
-- Monica Mwangi - Web/http/css design- mwangima@mail.uc.edu
+- Monica Mwangi - Web design (Http/css)- mwangima@mail.uc.edu
 
 ## Weekly Meetings
 - Meetings will be held every Tuesday at 9 PM via Teams.

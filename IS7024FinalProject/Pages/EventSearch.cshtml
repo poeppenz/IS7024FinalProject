@@ -1,41 +1,93 @@
 ﻿@page
 @model IS7024FinalProject.Pages.EventSearchModel
+@using IS7024FinalProject.Pages
+@using System.Globalization
+
 @{
-    ViewData["Title"] = "Event Search";
+ViewData["Title"] = "Event Search";
 }
 
-<head>
-    <link rel="stylesheet" href="site.css" type="text/css" />
-</head>
 
-<body>
-    <div id="subbanner" class="fullwidth">
-        <h1>Project Name</h1>
-    </div>
-    <div id="search">
-        <form action="/search" method="get">
-            <input type="search" id="search-input" name="query" placeholder="Search an Event...">
-            <button type="submit">Search</button>
-        </form>
-    </div>
-    <div id="eventcontainer" class="fullwidth">
-        <div class="eventdata">
-            <!-- Placeholder for Bootstrap Card -->
-            <h3>Event Name</h3>
-            <p>Event Date and Time</p>
-            <p>Event Location</p>
-        </div>
-        <div class="eventdata">
-            <!-- Placeholder for Bootstrap Card -->
-            <h3>Event Name</h3>
-            <p>Event Date and Time</p>
-            <p>Event Location</p>
-        </div>
-        <div class="eventdata">
-            <!-- Placeholder for Bootstrap Card -->
-            <h3>Event Name</h3>
-            <p>Event Date and Time</p>
-            <p>Event Location</p>
-        </div>
-    </div>
-</body>
+<div class="container my-5">
+<div class="text-center mb-4">
+<h1 class="display-4 text-primary">Event Finder</h1>
+<p class="lead">Search the SeatGeek API for events near you.</p>
+</div>
+
+
+<div id="event-search-area" class="row justify-content-center mb-5">
+<div class="col-12 col-md-10 col-lg-10">
+<form method="get" class="d-flex" role="search">
+<input class="form-control form-control-lg me-2 rounded-pill flex-grow-1" type="search" id="search-input" name="Query"
+placeholder="Search for a team, artist, or event (e.g., Indiana basketball)"
+value="@Model.Query" aria-label="Search">
+<button class="btn btn-lg btn-primary rounded-pill" type="submit">Search</button>
+</form>
+</div>
+</div>
+
+<!-- Event Results Container -->
+
+<div id="eventcontainer">
+@if (Model.SearchPerformed && Model.Events.Count == 0)
+{
+<div class="alert alert-warning text-center" role="alert">
+<h4 class="alert-heading">No Events Found!</h4>
+<p>We couldn't find any events matching your search for "<strong>@Model.Query</strong>". Please try a different query.</p>
+</div>
+}
+else if (Model.Events != null && Model.Events.Count > 0)
+{
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+@foreach (var eventItem in Model.Events)
+{
+// Construct the link for the next page, passing the necessary details (ID and location for parking)
+var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}&lat={eventItem.Venue.Location.Lat}&lon={eventItem.Venue.Location.Lon}";
+
+<div class="col">
+<a href="@parkingLink" class="text-decoration-none">
+<div class="card h-100">
+<!-- WHO: Implicitly the headliner/summary -->
+<div class="card-header text-center">
+@eventItem.GetPerformersSummary()
+</div>
+<div class="card-body text-center d-flex flex-column justify-content-between">
+<div>
+<!-- WHAT: The Event Title -->
+<h5 class="card-title">@eventItem.Title</h5>
+
+<!-- WHEN: Date and Time -->
+
+<p class="card-text mb-1 mt-3">
+<span class="event-detail-label d-block text-uppercase">Date & Time</span>
+<span class="fw-bold text-dark fs-6">@eventItem.DatetimeLocal.ToString("ddd, MMM dd, yyyy")</span>
+</p>
+<p class="card-text mb-3 text-muted small">
+@eventItem.DatetimeLocal.ToString("h:mm tt", CultureInfo.InvariantCulture)
+</p>
+</div>
+
+<!-- WHERE: Location and Venue -->
+
+<div>
+<p class="card-text mb-0">
+<span class="event-detail-label d-block text-uppercase">Venue</span>
+<span class="fw-bold fs-6">@eventItem.Venue.NameV2</span>
+</p>
+<p class="card-text text-muted small">@eventItem.Venue.DisplayLocation</p>
+</div>
+</div>
+
+<div class="card-footer text-center border-0 p-3">
+<span class="d-block fw-bold fs-5">Find Parking &rarr;</span>
+</div>
+</div>
+</a>
+</div>
+}
+</div>
+}
+
+</div>
+
+</div>

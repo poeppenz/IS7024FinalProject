@@ -14,6 +14,7 @@ ViewData["Title"] = "Event Search";
 <p class="lead">Search the SeatGeek API for events near you.</p>
 </div>
 
+<!-- Search Form Section -->
 
 <div id="event-search-area" class="row justify-content-center mb-5">
 <div class="col-12 col-md-10 col-lg-10">
@@ -41,12 +42,14 @@ else if (Model.Events != null && Model.Events.Count > 0)
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 @foreach (var eventItem in Model.Events)
 {
-// Construct the link for the next page, passing the necessary details (ID and location for parking)
+
 var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}";
 
 <div class="col">
 <a href="@parkingLink" class="text-decoration-none">
 <div class="card h-100">
+
+
 <!-- WHO: Implicitly the headliner/summary -->
 <div class="card-header text-center">
 @eventItem.GetPerformersSummary()
@@ -65,6 +68,14 @@ var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}";
 <p class="card-text mb-3 text-muted small">
 @eventItem.DatetimeLocal.ToString("h:mm tt", CultureInfo.InvariantCulture)
 </p>
+</div>
+
+<!-- Performer Image placed inside the card body, styled as a wide rectangle with rounded corners -->
+<div class="my-3">
+    <img src="@eventItem.GetPrimaryPerformerImageUrl()"
+         alt="@eventItem.Title"
+         class="rounded-3 border border-2 border-primary shadow-sm w-100"
+         style="height: 150px; object-fit: cover;">
 </div>
 
 <!-- WHERE: Location and Venue -->

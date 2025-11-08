@@ -1,8 +1,11 @@
 # EventParking
 
 ## Introduction
-This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking data from [ParkWhiz](https://www.parkwhiz.com/) to show convenient parking locations near events.
+This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking data from [ParkWhiz](https://www.parkwhiz.com/) to show convenient parking locations near events.  
 
+## Secrets  
+### SeatGeek:ClientId  
+The SeatGeek ClientId can be specified with an environment variable, user secret, or in the appsettings.json using SeatGeek:ClientId for secrets/environment or a JSON object keyed as SeatGeek with a ClientId property inside appsettings.json.
 
 ## Icon / Logo
 <img src="Assets/logo/logo.png" alt="A logo of a blue car on a bright red chair." width="200"/>

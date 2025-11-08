@@ -7,7 +7,6 @@
 ViewData["Title"] = "Event Search";
 }
 
-<!-- The content below will be placed inside the <body> and <main> tags of _Layout.cshtml, which already loads Bootstrap. -->
 
 <div class="container my-5">
 <div class="text-center mb-4">
@@ -15,7 +14,6 @@ ViewData["Title"] = "Event Search";
 <p class="lead">Search the SeatGeek API for events near you.</p>
 </div>
 
-<!-- Search Form Section - ID changed from 'search' to 'event-search-area' to avoid static width in site.css -->
 
 <div id="event-search-area" class="row justify-content-center mb-5">
 <div class="col-12 col-md-10 col-lg-10">
@@ -48,9 +46,9 @@ var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}&lat={eventItem.Venue.L
 
 <div class="col">
 <a href="@parkingLink" class="text-decoration-none">
-<div class="card h-100 shadow-lg border-primary">
+<div class="card h-100">
 <!-- WHO: Implicitly the headliner/summary -->
-<div class="card-header bg-primary text-white text-center">
+<div class="card-header text-center">
 @eventItem.GetPerformersSummary()
 </div>
 <div class="card-body text-center d-flex flex-column justify-content-between">
@@ -79,8 +77,9 @@ var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}&lat={eventItem.Venue.L
 <p class="card-text text-muted small">@eventItem.Venue.DisplayLocation</p>
 </div>
 </div>
-<div class="card-footer text-end bg-light border-0">
-<span class="btn btn-sm btn-outline-primary shadow-sm">Find Parking &rarr;</span>
+
+<div class="card-footer text-center border-0 p-3">
+<span class="d-block fw-bold fs-5">Find Parking &rarr;</span>
 </div>
 </div>
 </a>
@@ -92,43 +91,3 @@ var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}&lat={eventItem.Venue.L
 </div>
 
 </div>
-<!-- The custom <style> block is placed here to avoid interfering with _Layout.cshtml -->
-<style>
-/* Custom styles to enhance the page look and feel /
-.card {
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-transition: transform 0.2s, box-shadow 0.2s;
-border-radius: 12px;
-border: 1px solid #dee2e6;
-}
-.card:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-}
-.card-header {
-font-weight: 700;
-font-size: 1.15rem;
-padding: 1rem;
-border-top-left-radius: 11px !important; / Adjust to match card radius /
-border-top-right-radius: 11px !important;
-}
-.card-title {
-font-size: 1.4rem;
-margin-bottom: 0.25rem;
-color: #343a40; / Dark text for emphasis /
-}
-/ Ensures the card content fills the height and centers elements vertically /
-.card-body {
-padding: 1.5rem;
-}
-/ Style for the link element that wraps the card /
-.text-decoration-none:hover .card {
-border-color: #0d6efd; / Highlight border on hover /
-}
-/ Make the event details pop a bit more */
-.event-detail-label {
-color: #6c757d;
-font-size: 0.8rem;
-letter-spacing: 0.05rem;
-}
-</style>

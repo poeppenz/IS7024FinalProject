@@ -7,7 +7,7 @@
 }
 
 <div class="container my-5">
-    
+
     @if (!string.IsNullOrEmpty(Model.ErrorMessage))
     {
         <div class="alert alert-danger text-center" role="alert">
@@ -31,7 +31,7 @@
                     <span class="fw-bold text-primary fs-5">@Model.EventDetails.DatetimeLocal.ToString("ddd, MMM dd, yyyy")</span>
                     <p class="text-muted small mb-0">@Model.EventDetails.DatetimeLocal.ToString("h:mm tt", CultureInfo.InvariantCulture)</p>
                 </div>
-                
+
                 <!-- Venue -->
                 <div class="col-md-6">
                     <span class="event-detail-label d-block text-uppercase">Venue</span>
@@ -70,15 +70,15 @@
                             @* Use the new DisplayLocationName property or a fallback title *@
                             @(string.IsNullOrEmpty(quote.DisplayLocationName) ? "Parking Lot/Garage" : quote.DisplayLocationName)
                         </div>
-                        
+
                         <!-- NEW: Image Display -->
-                        <img src="@quote.DisplayImageUrl" 
-                             class="card-img-top" 
-                             alt="@(quote.DisplayLocationName) image" 
+                        <img src="@quote.DisplayImageUrl"
+                             class="card-img-top"
+                             alt="@(quote.DisplayLocationName) image"
                              style="max-height: 200px; object-fit: cover;">
 
                         <div class="card-body text-center d-flex flex-column justify-content-between">
-                            
+
                             <div>
                                 <!-- Price -->
                                 <h5 class="card-title text-danger fs-3 mb-3">
@@ -106,7 +106,11 @@
 
                         <!-- Card Footer - Call to Action (Using Red as a secondary CTA color) -->
                         <div class="card-footer text-center border-0 p-3 bg-danger" style="cursor: default;">
-                            <span class="d-block fw-bold fs-5 text-white">Book Now &rarr;</span>
+                            <a href="@($"https://www.parkwhiz.com/checkout?quote_id={quote.PurchaseOptions.First().Id}")"
+                               class="d-block fw-bold fs-5 text-white text-decoration-none"
+                               target="_blank" rel="noopener noreferrer">
+                                Book Now &rarr;
+                            </a>
                         </div>
                     </div>
                 </div>

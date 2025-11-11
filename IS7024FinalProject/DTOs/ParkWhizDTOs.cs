@@ -120,6 +120,9 @@ namespace IS7024FinalProject.DTOs
 
     public class PurchaseOption
     {
+        [JsonPropertyName("Id")]
+        public Guid Id { get; set; } = Guid.Empty;
+
         [JsonPropertyName("price")]
         public ParkWhizPrice Price { get; set; } = new ParkWhizPrice();
     }

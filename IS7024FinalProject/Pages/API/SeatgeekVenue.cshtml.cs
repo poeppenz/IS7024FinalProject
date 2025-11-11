@@ -2,12 +2,22 @@ namespace IS7024FinalProject.Pages.API;
 
 public class SeatgeekVenueModel : PageModel
 {
+    private readonly IConfiguration _configuration;
+    private readonly string _seatGeekClientId;
+
+    public SeatgeekVenueModel(IConfiguration configuration)
+    {
+        _configuration = configuration;
+        _seatGeekClientId = _configuration["SeatGeek:ClientId"] ??
+            throw new InvalidOperationException("SeatGeek:ClientId is not configured. Please set this value in appsettings.json or environment variables.");
+    }
+
     public async Task<IActionResult> OnGetAsync()
     {
         //https://publicapi.dev/seat-geek-api
 
         var client = new HttpClient();
-        var requestUrl = "https://api.seatgeek.com/2/venues?city=cincinnati&client_id=NTM5OTc0Mjh8MTc2MTM5NjcyNy4yMzE2ODA0";
+        var requestUrl = $"https://api.seatgeek.com/2/venues?city=cincinnati&client_id={_seatGeekClientId}";
 
         var response = await client.GetAsync(requestUrl);
         if (!response.IsSuccessStatusCode)

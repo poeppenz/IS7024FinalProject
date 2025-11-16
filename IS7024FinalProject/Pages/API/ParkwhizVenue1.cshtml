@@ -1,0 +1,44 @@
+﻿@page
+@model IS7024FinalProject.Pages.API.ParkwhizVenue1Model
+@{
+    ViewData["Title"] = "Parkwhiz Venues — Nearby";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p class="text-muted">Coordinates used: <strong>@(Model.Lat ?? 39.103100)</strong>, <strong>@(Model.Lon ?? -84.512000)</strong></p>
+<p class="small text-muted">Request: <code>@Model.RequestUrl</code></p>
+
+@if (Model.Venues == null || Model.Venues.Count == 0)
+{
+    <div class="alert alert-info">No venues found for the requested coordinates.</div>
+}
+else
+{
+    <table class="table table-striped table-sm table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Postal Code</th>
+                <th>Distance (mi)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var v in Model.Venues)
+            {
+                <tr>
+                    <td>@(string.IsNullOrWhiteSpace(v.Name) ? "—" : v.Name)</td>
+                    <td>@(string.IsNullOrWhiteSpace(v.Address1) ? "—" : v.Address1)</td>
+                    <td>@(string.IsNullOrWhiteSpace(v.City) ? "—" : v.City)</td>
+                    <td>@(string.IsNullOrWhiteSpace(v.State) ? "—" : v.State)</td>
+                    <td>@(string.IsNullOrWhiteSpace(v.PostalCode) ? "—" : v.PostalCode)</td>
+                    <td>@(v.Distance != null ? v.Distance.Miles.ToString("F2") : "—")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+}

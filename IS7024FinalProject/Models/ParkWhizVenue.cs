@@ -1,6 +1,5 @@
-﻿namespace IS7024FinalProject.Models
+﻿namespace IS7024FinalProject.Models;
+
+public class ParkWhizVenue
 {
-    public class ParkWhizVenue
-    {
-    }
 }

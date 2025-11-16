@@ -1,31 +1,29 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+namespace IS7024FinalProject.Pages.API;
 
-namespace IS7024FinalProject.Pages.API
+public class SeatgeekEventModel : PageModel
 {
-    public class SeatgeekEventModel : PageModel
+    private readonly IConfiguration _configuration;
+    private readonly string _seatGeekClientId;
+
+    public SeatgeekEventModel(IConfiguration configuration)
     {
-        public async Task<IActionResult> OnGetAsync()
+        _configuration = configuration;
+        _seatGeekClientId = _configuration["SeatGeek:ClientId"] ??
+            throw new InvalidOperationException("SeatGeek:ClientId is not configured. Please set this value in appsettings.json or environment variables.");
+    }
+
+    public async Task<IActionResult> OnGetAsync()
+    {
+        var client = new HttpClient();
+        var requestUrl = $"https://api.seatgeek.com/2/events?q=cincinnati&client_id={_seatGeekClientId}";
+
+        var response = await client.GetAsync(requestUrl);
+        if (!response.IsSuccessStatusCode)
         {
-            //https://publicapi.dev/seat-geek-api
-
-            var client = new HttpClient();
-            var requestUrl = "https://api.seatgeek.com/2/events?q=cincinnati&client_id=NTM5OTc0Mjh8MTc2MTM5NjcyNy4yMzE2ODA0";
-
-            var response = await client.GetAsync(requestUrl);
-            if (!response.IsSuccessStatusCode)
-            {
-                return StatusCode((int)response.StatusCode, "Error fetching data from Seatgeek API.");
-            }
-
-            var json = await response.Content.ReadAsStringAsync();
-            //ViewData["SeatgeekJson"] = json;
-
-            // Optionally, deserialize the JSON if you want to work with the data in C#
-            // var quotes = JsonSerializer.Deserialize<YourQuoteType>(json);
-
-            // For now, just return the raw JSON as content
-            return Content(json, "application/json");
+            return StatusCode((int)response.StatusCode, "Error fetching data from Seatgeek API.");
         }
+
+        var json = await response.Content.ReadAsStringAsync();
+        return Content(json, "application/json");
     }
 }

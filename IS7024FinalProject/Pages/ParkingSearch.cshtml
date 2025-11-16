@@ -1,0 +1,120 @@
+@page
+@model IS7024FinalProject.Pages.ParkingSearchModel
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Parking Search";
+}
+
+<div class="container my-5">
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger text-center" role="alert">
+            <h4 class="alert-heading">Error Loading Data</h4>
+            <p>@Model.ErrorMessage</p>
+        </div>
+    }
+
+    <!-- Event Details Card (Prominent Header) -->
+    <div class="card mb-5 shadow-lg border-2 border-primary">
+        <div class="card-header bg-primary text-white text-center py-3">
+            <h2 class="h4 mb-0">@Model.EventDetails.GetPerformersSummary()</h2>
+        </div>
+        <div class="card-body text-center">
+            <h3 class="card-title text-dark mb-3">@Model.EventDetails.Title</h3>
+
+            <div class="row text-center">
+                <!-- Date & Time -->
+                <div class="col-md-6 mb-3 mb-md-0 border-end">
+                    <span class="event-detail-label d-block text-uppercase">Date & Time</span>
+                    <span class="fw-bold text-primary fs-5">@Model.EventDetails.DatetimeLocal.ToString("ddd, MMM dd, yyyy")</span>
+                    <p class="text-muted small mb-0">@Model.EventDetails.DatetimeLocal.ToString("h:mm tt", CultureInfo.InvariantCulture)</p>
+                </div>
+
+                <!-- Venue -->
+                <div class="col-md-6">
+                    <span class="event-detail-label d-block text-uppercase">Venue</span>
+                    <span class="fw-bold text-primary fs-5">@Model.EventDetails.Venue.NameV2</span>
+                    <p class="text-muted small mb-0">@Model.EventDetails.Venue.DisplayLocation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Parking Results Section -->
+    <h3 class="text-center text-primary mb-4">Available Parking Near @Model.EventDetails.Venue.NameV2</h3>
+
+    @if (Model.ParkingSearchPerformed && Model.ParkingQuotes.Count == 0)
+    {
+        <div class="alert alert-info text-center" role="alert">
+            <h4 class="alert-heading">No Parking Found!</h4>
+            <p>We couldn't find any bookable parking quotes for the event time.</p>
+        </div>
+    }
+    else if (Model.ParkingQuotes.Count > 0)
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach (var quote in Model.ParkingQuotes)
+            {
+                // Find the lowest price for the quote
+                var minPrice = quote.MinPrice;
+                var distanceInFeet = quote.Distance.StraightLine.Feet;
+
+                <div class="col">
+                    <!-- Reuse the card styling from EventSearch -->
+                    <div class="card h-100">
+                        <!-- Parking Location Header -->
+                        <div class="card-header text-center">
+                            @* Use the new DisplayLocationName property or a fallback title *@
+                            @(string.IsNullOrEmpty(quote.DisplayLocationName) ? "Parking Lot/Garage" : quote.DisplayLocationName)
+                        </div>
+
+                        <!-- NEW: Image Display -->
+                        <img src="@quote.DisplayImageUrl"
+                             class="card-img-top"
+                             alt="@(quote.DisplayLocationName) image"
+                             style="max-height: 200px; object-fit: cover;">
+
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+
+                            <div>
+                                <!-- Price -->
+                                <h5 class="card-title text-danger fs-3 mb-3">
+                                    From $@minPrice.ToString("N2")
+                                </h5>
+
+                                <!-- Address -->
+                                <p class="card-text mb-0">
+                                    <span class="event-detail-label d-block text-uppercase">Address</span>
+                                    <span class="fw-bold fs-6">
+                                        @* Use the new DisplayStreetAddress property or a fallback message *@
+                                        @(string.IsNullOrEmpty(quote.DisplayStreetAddress) ? "Address Not Available" : quote.DisplayStreetAddress)
+                                    </span>
+                                </p>
+                            </div>
+
+                            <!-- Distance from Venue -->
+                            <div class="mt-3">
+                                <p class="card-text mb-0">
+                                    <span class="event-detail-label d-block text-uppercase">Distance</span>
+                                    <span class="fw-bold fs-6">@distanceInFeet feet from venue</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer - Call to Action (Using Red as a secondary CTA color) -->
+                        <div class="card-footer text-center border-0 p-3 bg-danger" style="cursor: default;">
+                            <a href="@($"https://www.parkwhiz.com/checkout?quote_id={quote.PurchaseOptions.First().Id}")"
+                               class="d-block fw-bold fs-5 text-white text-decoration-none"
+                               target="_blank" rel="noopener noreferrer">
+                                Book Now &rarr;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

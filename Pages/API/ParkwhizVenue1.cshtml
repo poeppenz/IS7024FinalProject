@@ -1,10 +1,14 @@
 @page
 @model IS7024FinalProject.Pages.API.ParkwhizVenue1Model
 @{
-    ViewData["Title"] = "Parkwhiz Venues — Nearby";
+    ViewData["Title"] = "Parkwhiz Venues â€” Nearby";
 }
 
-<h2>@ViewData["Title"]</h2>
+<h1>@ViewData["Title"]</h1>
+
+<h2>Welcome to Our Events and Parking  </h2>
+
+<p><stromg>Our goal is to assist you find the perfect parking spot for events you would like to attend </stromg> </p>
 
 <p class="text-muted">Coordinates used: <strong>@(Model.Lat ?? 39.103100)</strong>, <strong>@(Model.Lon ?? -84.512000)</strong></p>
 <p class="small text-muted">Request: <code>@Model.RequestUrl</code></p>
@@ -30,12 +34,12 @@ else
         @foreach (var v in Model.Venues)
         {
             <tr>
-                <td>@(string.IsNullOrWhiteSpace(v.Name) ? "—" : v.Name)</td>
-                <td>@(string.IsNullOrWhiteSpace(v.Address1) ? "—" : v.Address1)</td>
-                <td>@(string.IsNullOrWhiteSpace(v.City) ? "—" : v.City)</td>
-                <td>@(string.IsNullOrWhiteSpace(v.State) ? "—" : v.State)</td>
-                <td>@(string.IsNullOrWhiteSpace(v.PostalCode) ? "—" : v.PostalCode)</td>
-                <td>@(v.Distance != null ? v.Distance.Miles.ToString("F2") : "—")</td>
+                <td>@(string.IsNullOrWhiteSpace(v.Name) ? "â€”" : v.Name)</td>
+                <td>@(string.IsNullOrWhiteSpace(v.Address1) ? "â€”" : v.Address1)</td>
+                <td>@(string.IsNullOrWhiteSpace(v.City) ? "â€”" : v.City)</td>
+                <td>@(string.IsNullOrWhiteSpace(v.State) ? "â€”" : v.State)</td>
+                <td>@(string.IsNullOrWhiteSpace(v.PostalCode) ? "â€”" : v.PostalCode)</td>
+                <td>@(v.Distance != null ? v.Distance.Miles.ToString("F2") : "â€”")</td>
             </tr>
         }
         </tbody>

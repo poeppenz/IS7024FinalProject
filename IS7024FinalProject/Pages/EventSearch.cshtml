@@ -43,7 +43,7 @@
                 @foreach (var eventItem in Model.Events)
                 {
 
-                    var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}";
+                    var parkingLink = Model.GetParkingLink(eventItem.Id);
 
                     <div class="col">
                         <a href="@parkingLink" class="text-decoration-none">

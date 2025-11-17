@@ -36,7 +36,7 @@ This repository contains the code and documentation for the IS7024 Final Project
   - Given that the site has information for events and parking in my event location, when I search [Invalid Event Name], then I will get no results.
 - As an event goer, I want the abililty to click on a link to purchase parking so that I can make the purchase without having to find the the parking provider's website.
   - Given I have chosen a parking option that the site has information on, when I select [Parking Option With Online Purchasing], then I should be redirected to the parking provider's website to complete my purchase.
-  - Given I have chosen a parking option that the site has information on, when I select [Parking Option Without Online Purchasing], then I should be be told that online purchasing it not available for this selection. 
+  - Given I have chosen a parking option that the site has information on, when I select [Parking Option Without Online Purchasing], then I be told that online purchasing is not available for this selection. 
     
 
 ## Tasks
@@ -47,7 +47,7 @@ This repository contains the code and documentation for the IS7024 Final Project
 - [ ] Finalize a project name. EventParking
 - [ ] Develop frontend components to display events and parking options.
 - [ ] Test the application for usability and performance.
-- [ ] Deploy the application to a Azure.
+- [ ] Deploy the application to Azure.
 ## Examples: 1.
 Event and parking search data are available and accessible.
 ### Assumptions
@@ -58,7 +58,7 @@ Closest parking, spot spaces well stated.
 
 **Seat**: Available
 
-**When** I search for “Seat Greek”
+**When** I search for “SeatGreek”
 Then I should receive at least one result with these attributes:
 
 Location: Paycor Stadium Cincinnati

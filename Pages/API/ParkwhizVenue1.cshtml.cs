@@ -61,11 +61,10 @@ namespace IS7024FinalProject.Pages.API
                 };
 
                 // Deserialize to the schema-defined array of venues
-                var venues = JsonSerializer.Deserialize<List<VenueElement>>(json, options);
-                if (venues != null)
-                {
-                    Venues = venues;
-                }
+                var venues = await client.GetFromJsonAsync<List<VenueElement>>(RequestUrl, options);
+
+                Venues = venues ?? new List<VenueElement>();
+
 
                 return Page();
             }

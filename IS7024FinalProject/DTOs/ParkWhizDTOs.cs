@@ -29,23 +29,26 @@ namespace IS7024FinalProject.DTOs
     public class PwLocation
     {
         [JsonPropertyName("name")]
-        public string Name { get; set; } = string.Empty; // Location name
+        public string Name { get; set; } = string.Empty;
 
         [JsonPropertyName("address1")]
-        public string Address1 { get; set; } = string.Empty; // Street address
-        
+        public string Address1 { get; set; } = string.Empty;
+
         [JsonPropertyName("city")]
         public string City { get; set; } = string.Empty;
 
+        [JsonPropertyName("state")]
+        public string State { get; set; } = string.Empty;
+
         [JsonPropertyName("photos")]
-        public List<Photo> Photos { get; set; } = new List<Photo>(); // List of images
+        public List<Photo> Photos { get; set; } = new();
     }
 
     // DTO for the "_embedded" container
     public class ParkWhizEmbedded
     {
         [JsonPropertyName("pw:location")]
-        public PwLocation? Location { get; set; } // Nullable, as it might be missing
+        public PwLocation? Location { get; set; }
     }
 
     public class ParkWhizQuote
@@ -57,59 +60,50 @@ namespace IS7024FinalProject.DTOs
         public string Type { get; set; } = string.Empty;
 
         [JsonPropertyName("distance")]
-        public ParkWhizDistance Distance { get; set; } = new ParkWhizDistance();
+        public ParkWhizDistance Distance { get; set; } = new();
 
         [JsonPropertyName("purchase_options")]
-        public List<PurchaseOption> PurchaseOptions { get; set; } = new List<PurchaseOption>();
+        public List<PurchaseOption> PurchaseOptions { get; set; } = new();
 
-        // New field to capture the nested embedded data
         [JsonPropertyName("_embedded")]
-        public ParkWhizEmbedded Embedded { get; set; } = new ParkWhizEmbedded();
+        public ParkWhizEmbedded Embedded { get; set; } = new();
 
         // --- Calculated Properties for Easy Access and Display ---
-        
+
         public string DisplayLocationName => Embedded.Location?.Name ?? string.Empty;
-        
-        // Construct the full address from the nested fields
+
         public string DisplayStreetAddress
         {
             get
             {
                 if (Embedded.Location == null) return string.Empty;
 
-                // Concatenate Address1, City, and State for a complete address string
-                var parts = new List<string> { Embedded.Location.Address1, Embedded.Location.City };
-                
-                // Filter out empty parts before joining
+                var parts = new List<string>
+                {
+                    Embedded.Location.Address1,
+                    Embedded.Location.City,
+                    Embedded.Location.State
+                };
+
                 parts.RemoveAll(string.IsNullOrWhiteSpace);
-                
                 return string.Join(", ", parts);
             }
         }
 
-        // NEW: Property to grab the URL for the first photo's "gallery" size
-        public string DisplayImageUrl
-        {
-            get
-            {
-                // Try to get the URL from the first photo
-                var imageUrl = Embedded.Location?.Photos.FirstOrDefault()?.Sizes?.Gallery?.Url;
+        public string DisplayImageUrl =>
+            Embedded.Location?.Photos.FirstOrDefault()?.Sizes?.Gallery?.Url
+            ?? "https://placehold.co/400x300/e9ecef/495057?text=Parking+Image+N%2FA";
 
-                // Return the URL or a styled placeholder if no image is available
-                // Using a standard placeholder image URL as a string fallback (400x300 for card)
-                return imageUrl ?? "https://placehold.co/400x300/e9ecef/495057?text=Parking+Image+N%2FA";
-            }
-        }
-
-        // MinPrice logic remains the same
-        public decimal MinPrice => PurchaseOptions.Count > 0 ? 
-            PurchaseOptions.Min(p => decimal.TryParse(p.Price.USD, out var price) ? price : decimal.MaxValue) : 0;
+        public decimal MinPrice =>
+            PurchaseOptions.Count > 0
+                ? PurchaseOptions.Min(p => decimal.TryParse(p.Price.USD, out var price) ? price : decimal.MaxValue)
+                : 0;
     }
 
     public class ParkWhizDistance
     {
         [JsonPropertyName("straight_line")]
-        public ParkWhizStraightLine StraightLine { get; set; } = new ParkWhizStraightLine();
+        public ParkWhizStraightLine StraightLine { get; set; } = new();
     }
 
     public class ParkWhizStraightLine
@@ -120,11 +114,11 @@ namespace IS7024FinalProject.DTOs
 
     public class PurchaseOption
     {
-        [JsonPropertyName("Id")]
+        [JsonPropertyName("id")]
         public Guid Id { get; set; } = Guid.Empty;
 
         [JsonPropertyName("price")]
-        public ParkWhizPrice Price { get; set; } = new ParkWhizPrice();
+        public ParkWhizPrice Price { get; set; } = new();
     }
 
     public class ParkWhizPrice

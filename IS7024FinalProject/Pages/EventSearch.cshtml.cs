@@ -7,6 +7,7 @@ namespace IS7024FinalProject.Pages;
 // --- Razor Page Model ---
 public class EventSearchModel : PageModel
 {
+    private const string SeatGeekBaseUrl = "https://api.seatgeek.com/2/events";
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration; // Inject configuration service
     private readonly string _seatGeekClientId;
@@ -40,7 +41,8 @@ public class EventSearchModel : PageModel
         SearchPerformed = true;
 
         var encodedQuery = HttpUtility.UrlEncode(Query);
-        var apiUrl = $"https://api.seatgeek.com/2/events?q={encodedQuery}&client_id={_seatGeekClientId}";
+        var apiUrl = $"{SeatGeekBaseUrl}?q={encodedQuery}&client_id={_seatGeekClientId}";
+
 
         try
         {

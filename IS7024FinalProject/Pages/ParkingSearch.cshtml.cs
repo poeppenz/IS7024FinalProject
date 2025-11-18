@@ -8,7 +8,7 @@ namespace IS7024FinalProject.Pages;
 // --- Razor Page Model ---
 public class ParkingSearchModel : PageModel
 {
-    private readonly HttpClient _httpClient;
+    private readonly HttpClient _apiHttpClient;
     private readonly IConfiguration _configuration;
     private readonly string _seatGeekClientId;
     private readonly string _parkWhizApiKey; // ParkWhiz uses API Key
@@ -18,7 +18,7 @@ public class ParkingSearchModel : PageModel
 
     public ParkingSearchModel(HttpClient httpClient, IConfiguration configuration)
     {
-        _httpClient = httpClient;
+        _apiHttpClient = httpClient;
         _configuration = configuration;
         
         // Get API Keys from configuration
@@ -57,7 +57,7 @@ public class ParkingSearchModel : PageModel
         try
         {
             var eventApiUrl = $"https://api.seatgeek.com/2/events/{EventId}?client_id={_seatGeekClientId}";
-            var response = await _httpClient.GetAsync(eventApiUrl);
+            var response = await _apiHttpClient.GetAsync(eventApiUrl);
 
             if (response.IsSuccessStatusCode)
 
@@ -137,7 +137,7 @@ public class ParkingSearchModel : PageModel
                 request.Headers.Add("X-Api-Key", _parkWhizApiKey);
             }
 
-            var response = await _httpClient.SendAsync(request);
+            var response = await _apiHttpClient.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {

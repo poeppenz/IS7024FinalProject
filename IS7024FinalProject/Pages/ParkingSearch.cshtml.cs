@@ -8,14 +8,17 @@ namespace IS7024FinalProject.Pages;
 // --- Razor Page Model ---
 public class ParkingSearchModel : PageModel
 {
-    private readonly HttpClient _httpClient;
+    private readonly HttpClient _apiHttpClient;
     private readonly IConfiguration _configuration;
     private readonly string _seatGeekClientId;
     private readonly string _parkWhizApiKey; // ParkWhiz uses API Key
 
+    private static readonly JsonSerializerOptions JsonOptions =
+       new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
     public ParkingSearchModel(HttpClient httpClient, IConfiguration configuration)
     {
-        _httpClient = httpClient;
+        _apiHttpClient = httpClient;
         _configuration = configuration;
         
         // Get API Keys from configuration
@@ -54,14 +57,16 @@ public class ParkingSearchModel : PageModel
         try
         {
             var eventApiUrl = $"https://api.seatgeek.com/2/events/{EventId}?client_id={_seatGeekClientId}";
-            var response = await _httpClient.GetAsync(eventApiUrl);
+            var response = await _apiHttpClient.GetAsync(eventApiUrl);
 
             if (response.IsSuccessStatusCode)
+
             {
                 var jsonContent = await response.Content.ReadAsStringAsync();
+
+                var eventDetails = JsonSerializer.Deserialize<Event>(jsonContent, JsonOptions);
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                
-                var eventDetails = JsonSerializer.Deserialize<Event>(jsonContent, options);
+               
                 if (eventDetails != null)
                 {
                     EventDetails = eventDetails;
@@ -132,24 +137,24 @@ public class ParkingSearchModel : PageModel
                 request.Headers.Add("X-Api-Key", _parkWhizApiKey);
             }
 
-            var response = await _httpClient.SendAsync(request);
+            var response = await _apiHttpClient.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonContent = await response.Content.ReadAsStringAsync();
-                
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                
+
                 // ParkWhiz returns an array of quotes
-                var quotes = JsonSerializer.Deserialize<List<ParkWhizQuote>>(jsonContent, options);
-                
+                var quotes = JsonSerializer.Deserialize<List<ParkWhizQuote>>(jsonContent, JsonOptions);
+
                 if (quotes != null)
                 {
                     // Filter out quotes with no available purchase options (or price will be 0)
-                    ParkingQuotes = quotes.Where(q => q.PurchaseOptions.Count > 0)
-                                          .OrderBy(q => q.MinPrice) // Sort by cheapest
-                                          .ToList();
+                    ParkingQuotes = quotes
+                        .Where(q => q.PurchaseOptions != null && q.PurchaseOptions.Count > 0)
+                        .OrderBy(q => q.MinPrice) // Sort by cheapest
+                        .ToList();
                 }
+
             }
             else
             {

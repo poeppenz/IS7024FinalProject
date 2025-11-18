@@ -8,10 +8,18 @@
     <div id="homebanner" class="fullwidth">
         <h1>Event Parking</h1>
         <div id="search">
-            <form action="/EventSearch" method="get">
-                <input type="search" id="search-input" name="query" placeholder="Search an Event by Name or Location...">
+            <form action="/EventSearch" method="get" role="search" aria-label="Search events by name or location">
+                <label for="search-input" class="visually-hidden">
+                    Search events by name or location
+                </label>
+                <input type="search"
+                       id="search-input"
+                       name="query"
+                       placeholder="Search an Event by Name or Location..."
+                       required />
                 <button type="submit">Search</button>
             </form>
+
         </div>
 <div> <P>Locating a parking spot even before you reserve your events motivates you even more not to fail to attend not only yourself but with your family as well. 
 The events could range from basketball, football, concert, musicals etc.
@@ -25,19 +33,38 @@ The events could range from basketball, football, concert, musicals etc.
         <div>
             <h1>Search Parkwhiz Venues</h1>
 
-            <form method="get" asp-page="/API/ParkwhizVenue1" class="row g-2 align-items-center">
+            <form method="get"
+                  asp-page="/API/ParkwhizVenue1"
+                  class="row g-2 align-items-center"
+                  role="search"
+                  aria-label="Search Parkwhiz venues by GPS coordinates">
                 <div class="col-auto">
                     <label class="form-label visually-hidden" for="Lat">Latitude</label>
-                    <input id="Lat" name="Lat" class="form-control" placeholder="Latitude (e.g. 39.103100)" value="39.103100" />
+                    <input id="Lat"
+                           name="Lat"
+                           class="form-control"
+                           type="number"
+                           step="any"
+                           placeholder="Latitude (e.g. 39.103100)"
+                           value="39.103100"
+                           required />
                 </div>
                 <div class="col-auto">
                     <label class="form-label visually-hidden" for="Lon">Longitude</label>
-                    <input id="Lon" name="Lon" class="form-control" placeholder="Longitude (e.g. -84.512000)" value="-84.512000" />
+                    <input id="Lon"
+                           name="Lon"
+                           class="form-control"
+                           type="number"
+                           step="any"
+                           placeholder="Longitude (e.g. -84.512000)"
+                           value="-84.512000"
+                           required />
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </form>
+
 
             <p class="mt-3 text-muted">Enter GPS coordinates and press Search. You'll be taken to the Parkwhiz Venues page with the coordinates in the URL.</p>
         </div>

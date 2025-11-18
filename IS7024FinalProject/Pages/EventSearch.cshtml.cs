@@ -53,6 +53,12 @@ public class EventSearchModel : PageModel
             if (response.IsSuccessStatusCode)
             {
                 var jsonContent = await response.Content.ReadAsStringAsync();
+                if (string.IsNullOrWhiteSpace(jsonContent))
+                {
+                    ModelState.AddModelError(string.Empty, "Received an empty response from the events service.");
+                    Events = new List<Event>();
+                    return;
+                }
 
                 var options = new JsonSerializerOptions
                 {

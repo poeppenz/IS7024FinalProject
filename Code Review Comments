@@ -1,0 +1,6 @@
+In API folder I changed a small typo to proper html formatting  and simplified venues code to avoid manual string handling
+In ParkWhizQuote the key improvement is replacing direct HttpClient instantiation with dependency injection, ensuring better resource management, testability, and cleaner error handling
+In ParkWhizDTO’s the revisions make it easier to deserialize JSON into C# objects and safely access nested data. I added null-safety, a few name changes to consider, and calculated properties for display values.  It should improve readability
+
+List three items you learned from the code review- code consolidation (this group wrote code efficiently more so than what my initial attempts show), there are some benefits to name variability, depending on the use case my group may opt for it rather than standardization of naming, and variable string handling can be powerful when leveraging the API calls the way this group does.
+The project was available on GitHub on time, compiles, and has adequate documentation. I leveraged some of the C# Coding Conventions and Introduction to Razor Pages in ASP.NET Core for this code review.

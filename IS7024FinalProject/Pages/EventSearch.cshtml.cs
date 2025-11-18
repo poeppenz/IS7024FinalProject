@@ -46,6 +46,8 @@ public class EventSearchModel : PageModel
 
         try
         {
+            _httpClient.Timeout = TimeSpan.FromSeconds(10);
+
             var response = await _httpClient.GetAsync(apiUrl);
 
             if (response.IsSuccessStatusCode)

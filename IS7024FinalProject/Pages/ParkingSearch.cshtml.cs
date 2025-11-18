@@ -149,10 +149,12 @@ public class ParkingSearchModel : PageModel
                 if (quotes != null)
                 {
                     // Filter out quotes with no available purchase options (or price will be 0)
-                    ParkingQuotes = quotes.Where(q => q.PurchaseOptions.Count > 0)
-                                          .OrderBy(q => q.MinPrice) // Sort by cheapest
-                                          .ToList();
+                    ParkingQuotes = quotes
+                        .Where(q => q.PurchaseOptions != null && q.PurchaseOptions.Count > 0)
+                        .OrderBy(q => q.MinPrice) // Sort by cheapest
+                        .ToList();
                 }
+
             }
             else
             {

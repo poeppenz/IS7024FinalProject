@@ -8,10 +8,18 @@
     <div id="homebanner" class="fullwidth">
         <h1>Event Parking</h1>
         <div id="search">
-            <form action="/EventSearch" method="get">
-                <input type="search" id="search-input" name="query" placeholder="Search an Event by Name or Location...">
+            <form action="/EventSearch" method="get" role="search" aria-label="Search events by name or location">
+                <label for="search-input" class="visually-hidden">
+                    Search events by name or location
+                </label>
+                <input type="search"
+                       id="search-input"
+                       name="query"
+                       placeholder="Search an Event by Name or Location..."
+                       required />
                 <button type="submit">Search</button>
             </form>
+
         </div>
 <div> <P>Locating a parking spot even before you reserve your events motivates you even more not to fail to attend not only yourself but with your family as well. 
 The events could range from basketball, football, concert, musicals etc.

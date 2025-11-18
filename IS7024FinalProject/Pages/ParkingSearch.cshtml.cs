@@ -13,6 +13,9 @@ public class ParkingSearchModel : PageModel
     private readonly string _seatGeekClientId;
     private readonly string _parkWhizApiKey; // ParkWhiz uses API Key
 
+    private static readonly JsonSerializerOptions JsonOptions =
+       new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+
     public ParkingSearchModel(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
@@ -57,11 +60,13 @@ public class ParkingSearchModel : PageModel
             var response = await _httpClient.GetAsync(eventApiUrl);
 
             if (response.IsSuccessStatusCode)
+
             {
                 var jsonContent = await response.Content.ReadAsStringAsync();
+
+                var eventDetails = JsonSerializer.Deserialize<Event>(jsonContent, JsonOptions);
                 var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                
-                var eventDetails = JsonSerializer.Deserialize<Event>(jsonContent, options);
+               
                 if (eventDetails != null)
                 {
                     EventDetails = eventDetails;
@@ -137,12 +142,10 @@ public class ParkingSearchModel : PageModel
             if (response.IsSuccessStatusCode)
             {
                 var jsonContent = await response.Content.ReadAsStringAsync();
-                
-                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-                
+
                 // ParkWhiz returns an array of quotes
-                var quotes = JsonSerializer.Deserialize<List<ParkWhizQuote>>(jsonContent, options);
-                
+                var quotes = JsonSerializer.Deserialize<List<ParkWhizQuote>>(jsonContent, JsonOptions);
+
                 if (quotes != null)
                 {
                     // Filter out quotes with no available purchase options (or price will be 0)

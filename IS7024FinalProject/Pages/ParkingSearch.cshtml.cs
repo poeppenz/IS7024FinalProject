@@ -95,9 +95,10 @@ public class ParkingSearchModel : PageModel
         ParkingSearchPerformed = true;
 
         // NEW: Get coordinates from the fetched Event Details
-        var lat = EventDetails.Venue.Location.Lat;
-        var lon = EventDetails.Venue.Location.Lon;
-        
+        var lat = EventDetails?.Venue?.Location?.Lat ?? 0.0;
+        var lon = EventDetails?.Venue?.Location?.Lon ?? 0.0;
+
+
         // Use UTC times from the Event DTO for reliable calculation and ParkWhiz API compatibility.
         // Start 1 hour before the event's UTC start time to allow time to arrive and park.
         var parkingStartTimeUtc = EventDetails.DatetimeUtc.AddHours(-1);

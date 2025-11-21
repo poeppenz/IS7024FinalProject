@@ -1,6 +1,7 @@
 using IS7024FinalProject.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 
 
 
@@ -44,3 +45,4 @@ app.MapRazorPages()
    .WithStaticAssets();
 
 app.Run();
+

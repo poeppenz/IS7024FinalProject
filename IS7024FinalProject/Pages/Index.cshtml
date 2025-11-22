@@ -4,26 +4,48 @@
     ViewData["Title"] = "Home Page";
 }
 
-<body>
-    <div id="homebanner" class="fullwidth">
-        <h1>Event Parking</h1>
-        <div id="search">
-            <form action="/EventSearch" method="get">
-                <input type="search" id="search-input" name="query" placeholder="Search an Event by Name or Location...">
-                <button type="submit">Search</button>
-            </form>
-        </div>
-<div> <P>Locating a parking spot even before you reserve your events motivates you even more not to fail to attend not only yourself but with your family as well. 
-The events could range from basketball, football, concert, musicals etc.
- Name it we have the parking spot for you.  
- </P> </div>
-    </div>
-    <div id="support" class="fullwidth">
-        <div id="broll" class="supportsection">
-            <img src="~/logo_300x300.png" />
-        </div>
-        <div>
-            <h1>Search Parkwhiz Venues</h1>
+<body class="bg-light">
+
+    <!-- OUTER CONTAINER TO CENTER THE CARD -->
+    <div class="container py-5 d-flex justify-content-center">
+
+        <!-- WHITE CARD -->
+        <div class="card shadow p-4" style="max-width: 900px; width: 100%; border-radius: 15px;">
+
+            <!-- HERO SECTION -->
+            <h1 class="text-center mb-4 fw-bold">Event Parking</h1>
+
+            <!-- SEARCH BAR -->
+            <div class="mb-4 text-center">
+                <form action="/EventSearch" method="get" class="d-flex justify-content-center gap-2">
+                    <input type="search"
+                           name="query"
+                           class="form-control w-50"
+                           placeholder="Search an Event by Name or Location..."
+                           required />
+
+                    <button type="submit" class="btn btn-primary px-4">Search</button>
+                </form>
+            </div>
+
+            <!-- DESCRIPTION -->
+            <p class="text-center mb-5" style="max-width: 700px; margin: auto;">
+                Locating a parking spot even before you reserve your events motivates you even more
+                not to fail to attend not only yourself but with your family as well.
+                Events could range from basketball, football, concerts, musicals etc.
+                Name it — we have the parking spot for you.
+            </p>
+
+            <!-- IMAGE -->
+            <div class="text-center mb-4">
+                <img src="~/logo_300x300.png" style="max-width: 300px;" alt="Parking logo" />
+            </div>
+
+            <!-- PARKWHIZ SECTION -->
+            <h2 class="text-center fw-bold mb-3">Search Parkwhiz Venues</h2>
+
+            <form method="get" asp-page="/API/ParkwhizVenue1"
+                  class="row g-3 justify-content-center">
 
             <form method="get" asp-page="/API/ParkwhizVenue1" class="row g-2 align-items-center">
                 <div class="col-auto">

@@ -9,7 +9,7 @@
 }
 
 #navigation {
-    background-color: #F8FCFC;
+    background-color:#D3F8F8;
     border: solid;
     vertical-align: top;
     margin-top: 0px;
@@ -32,6 +32,13 @@ input[type=submit] {
 }
 
 h1 {
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
 
 p {

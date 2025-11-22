@@ -1,0 +1,26 @@
+﻿body {
+}
+body {
+    background-color: #F7F7F7;
+}
+
+#content {
+    position: relative;
+    margin-top: 3em;
+}
+
+#navigation {
+   display: none;
+}
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+#printonly {
+    display: block;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+form {
+    display: none;
+}

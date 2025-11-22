@@ -1,25 +1,17 @@
-using System.Text.Json;
-using System.Web; // Needed for HttpUtility.UrlEncode
-using IS7024FinalProject.DTOs; // New: Reference the shared DTOs
-
 namespace IS7024FinalProject.Pages;
 
 // --- Razor Page Model ---
 public class EventSearchModel : PageModel
 {
-    private const string SeatGeekBaseUrl = "https://api.seatgeek.com/2/events";
+    private IAPIService _apiService;
     private readonly HttpClient _httpClient;
-    private readonly IConfiguration _configuration; // Inject configuration service
-    private readonly string _seatGeekClientId;
+    private readonly IConfiguration _configuration;
 
     public EventSearchModel(HttpClient httpClient, IConfiguration configuration)
     {
         _httpClient = httpClient;
         _configuration = configuration;
-        
-        // Read the Client ID from the configuration (e.g., appsettings.json or environment variable)
-        _seatGeekClientId = _configuration["SeatGeek:ClientId"] ?? 
-                            throw new InvalidOperationException("SeatGeek:ClientId is not configured. Please set this value in appsettings.json or environment variables.");
+        _apiService = new APIService(_httpClient, _configuration);
     }
 
     [BindProperty(SupportsGet = true)]
@@ -40,52 +32,13 @@ public class EventSearchModel : PageModel
 
         SearchPerformed = true;
 
-        var encodedQuery = HttpUtility.UrlEncode(Query);
-        var apiUrl = $"{SeatGeekBaseUrl}?q={encodedQuery}&client_id={_seatGeekClientId}";
+        var (events, errorMessage) = await _apiService.SearchEventsAsync(Query);
 
+        Events = events;
 
-        try
+        if (!string.IsNullOrEmpty(errorMessage))
         {
-            _httpClient.Timeout = TimeSpan.FromSeconds(10);
-
-            var response = await _httpClient.GetAsync(apiUrl);
-
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonContent = await response.Content.ReadAsStringAsync();
-                if (string.IsNullOrWhiteSpace(jsonContent))
-                {
-                    ModelState.AddModelError(string.Empty, "Received an empty response from the events service.");
-                    Events = new List<Event>();
-                    return;
-                }
-
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                    ReadCommentHandling = JsonCommentHandling.Skip,
-                    AllowTrailingCommas = true
-                };
-
-                var seatGeekResponse = JsonSerializer.Deserialize<SeatGeekResponse>(jsonContent, options);
-
-                Events = seatGeekResponse?.Events ?? new List<Event>();
-            }
-            else
-            {
-                ModelState.AddModelError(string.Empty, $"SeatGeek API returned an error: {response.StatusCode}");
-                Events = new List<Event>();
-            }
-        }
-        catch (JsonException jsonEx)
-        {
-            ModelState.AddModelError(string.Empty, $"Failed to parse event data: {jsonEx.Message}");
-            Events = new List<Event>();
-        }
-        catch (Exception ex)
-        {
-            ModelState.AddModelError(string.Empty, $"An error occurred while fetching events: {ex.Message}");
-            Events = new List<Event>();
+            ModelState.AddModelError(string.Empty, errorMessage);
         }
     }
 }

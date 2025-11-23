@@ -17,7 +17,10 @@
 
             <!-- SEARCH BAR -->
             <div class="mb-4 text-center">
-                <form action="/EventSearch" method="get" class="d-flex justify-content-center gap-2">
+                <form action="/EventSearch" 
+                    method="get" 
+                    class="d-flex justify-content-center gap-2" 
+                    aria-label="Search events by name or location">
                     <input type="search"
                            name="query"
                            class="form-control w-50"
@@ -38,7 +41,7 @@
 
             <!-- IMAGE -->
             <div class="text-center mb-4">
-                <img src="~/logo_300x300.png" style="max-width: 300px;" alt="Parking logo" />
+                <img src="~/logo_300x300.png" style="max-width: 300px;" alt="The Event Parking Logo: A car on a platform." />
             </div>
 
             <!-- PARKWHIZ SECTION -->
@@ -56,15 +59,9 @@
                            value="39.103100"
                            required />
                 </div>
-
-                <div class="col-md-4">
-                    <label class="form-label">Longitude</label>
-                    <input id="Lon"
-                           name="Lon"
-                           class="form-control"
-                           placeholder="e.g. -84.512000"
-                           value="-84.512000"
-                           required />
+                <div class="col-auto">
+                    <label class="form-label visually-hidden" for="Lon">Longitude</label>
+                    <input id="Lon" name="Lon" class="form-control" placeholder="Longitude (e.g. -84.512000)" value="-84.512000" />
                 </div>
 
                 <div class="col-12 text-center">

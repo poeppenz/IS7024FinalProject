@@ -13,7 +13,7 @@ p {
 }
 
 #navigation {
-    background-color: F8FCFC;
+    background-color: #F8FCFC;
     border: solid;
     vertical-align: top;
     margin-top: 0px;
@@ -31,7 +31,7 @@ p {
 }
 
 p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 #printonly {

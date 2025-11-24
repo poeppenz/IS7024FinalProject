@@ -1,7 +1,7 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page"; <img src= alt="Home icon"/>
 }
 <link rel="stylesheet" href="css/StyleSheet.css" type="text/css" />
 <link rel="stylesheet" href="css/print.css" type="text/css" />
@@ -37,22 +37,25 @@
 
             <!-- DESCRIPTION -->
             <p class="text-center mb-5" style="max-width: 700px; margin: auto;">
+               </p>
+            <p>
                 Locating a parking spot even before you reserve your events motivates you even more
                 not to fail to attend not only yourself but with your family as well.
                 Events could range from basketball, football, concerts, musicals etc.
-                Name it — we have the parking spot for you.
+                Name it we have the parking spot for you.
             </p>
-
+             <div id= "content">
             <!-- IMAGE -->
             <div class="text-center mb-4">
                 <img src="~/logo_300x300.png" style="max-width: 300px;" alt="The Event Parking Logo: A car on a platform." />
             </div>
-
+          
             <!-- PARKWHIZ SECTION -->
-            <h2 class="text-center fw-bold mb-3">Search Parkwhiz Venues</h2>
+
+              <div class="text-center fw-bold mb-3"><h3>Search Parkwhiz Venues</h3></div>
 
             <form method="get" asp-page="/API/ParkwhizVenue1"
-                  class="row g-3 justify-content-center">
+                  class="row g-3 justify-content-center"> 
 
                 <div class="col-md-4">
                     <label class="form-label">Latitude</label>
@@ -65,17 +68,18 @@
                 </div>
                 <div class="col-auto">
                     <label class="form-label visually-hidden" for="Lon">Longitude</label>
-                    <input id="Lon" name="Lon" class="form-control" placeholder="Longitude (e.g. -84.512000)" value="-84.512000" />
+                    <input id="Lon" name="Lon" class="form-control" placeholder="Longitude (e.g. -84.512000)" value="-84.512000" /> 
                 </div>
 
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-success px-4">Search</button>
                 </div>
-            </form>
+           
+           </form> 
 
-            <p class="mt-3 text-center text-muted">
-                Enter GPS coordinates and press Search. You'll be taken to the Parkwhiz Venues page with the coordinates in the URL.
-            </p>
+            <p class="mt-3 text-center text-muted"> <p>Enter GPS coordinates and press Search. You'll be taken to the Parkwhiz Venues page with the coordinates in the URL.</P> </p>
+            
+           
 
         </div> 
 

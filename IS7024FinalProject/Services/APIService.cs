@@ -28,7 +28,7 @@ namespace IS7024FinalProject.Services
         public APIService(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
-            _parkWhizApiKey = configuration["ParkWhiz:ApiKey"] ?? string.Empty;
+            _parkWhizApiKey = configuration["ParkWhiz:ApiKey"] ?? "";
             _seatgeekApiKey = configuration["SeatGeek:ClientId"] ?? throw new InvalidOperationException("SeatGeek:ClientId is not configured. Please set this value in appsettings.json or environment variables.");
         }
 

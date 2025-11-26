@@ -1,11 +1,6 @@
-using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Azure.Identity;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
+using Microsoft.OpenApi;
 
-// 1. Initial Configuration Setup (Before builder.Build())
 var builder = WebApplication.CreateBuilder(args);
 var keyVaultUrl = builder.Configuration["KeyVault:VaultUri"];
 
@@ -38,6 +33,18 @@ else
 
 // Add the rest of your services
 builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(o =>
+{
+    o.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "EventParking",
+        Version = "v1",
+        Description = "API for searching events and parking options.",
+    });
+}
+);
 builder.Services.AddHttpClient();
 
 
@@ -58,6 +65,18 @@ try
         app.UseExceptionHandler("/Error");
         app.UseHsts();
     }
+
+
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+    });
+
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
     app.UseHttpsRedirection();
     app.UseRouting();

@@ -14,7 +14,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">EventParking</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index"><img src="~/carp.png" alt="The Event Parking Logo: A car on a platform." /> EventParking </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,16 +22,15 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index"><img src="~/home.png" alt="Home Icon" /> </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/EventSearch">Event Search</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/EventSearch"><img src="~/parking.png" alt="Parking Search" /></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/API/SeatgeekEvent">SeatgeekEvent</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
@@ -45,7 +44,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - IS7024FinalProject - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2025 - Event Parking - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 

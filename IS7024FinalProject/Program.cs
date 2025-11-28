@@ -1,4 +1,6 @@
 using Azure.Identity;
+using IS7024FinalProject.Pages.API;
+using IS7024FinalProject.Services;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +14,7 @@ if (!string.IsNullOrEmpty(keyVaultUrl))
     try
     {
         logger.LogInformation("Attempting to connect to Key Vault at: {KeyVaultUrl}", keyVaultUrl);
-        
+
         builder.Configuration.AddAzureKeyVault(
             new Uri(keyVaultUrl),
             new DefaultAzureCredential()
@@ -35,20 +37,25 @@ else
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+// Register IAPIService implementation with DI using IHttpClientFactory
+builder.Services.AddHttpClient<IAPIService, APIService>();
+
 builder.Services.AddSwaggerGen(o =>
 {
+    o.EnableAnnotations();
     o.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "EventParking",
         Version = "v1",
         Description = "API for searching events and parking options.",
     });
-}
-);
+
+    o.UseAllOfToExtendReferenceSchemas();
+    o.CustomSchemaIds(type => type.FullName);
+});
 builder.Services.AddHttpClient();
 
-
-// 2. Application Pipeline Build and Run Phase
 try
 {
     var app = builder.Build();
@@ -56,9 +63,16 @@ try
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
-        // **CAUTION**: UseMigrationsEndPoint is a common crash point for non-DB apps.
-        // It's still present here, but wrapped in the main try/catch.
-        app.UseMigrationsEndPoint();
+        // Show detailed errors locally
+        app.UseDeveloperExceptionPage();
+
+        // Swagger only active in Development until packages are verified
+        app.UseSwagger();
+        app.UseSwaggerUI(c =>
+        {
+            c.SwaggerEndpoint("/swagger/v1/swagger.json", "EventParking v1");
+            // c.RoutePrefix = string.Empty; // uncomment to serve UI at app root
+        });
     }
     else
     {
@@ -66,17 +80,9 @@ try
         app.UseHsts();
     }
 
-
-    app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
-    });
-
     app.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
     app.UseHttpsRedirection();
     app.UseRouting();
@@ -84,13 +90,16 @@ try
     app.MapStaticAssets();
     app.MapRazorPages().WithStaticAssets();
 
+    // Register the GetEventSearch minimal endpoint
+    GetEventSearch.Map(app);
+
     app.Run();
 }
 catch (Exception ex)
 {
     // This catches exceptions from builder.Build() or anything in the pipeline setup.
     logger.LogCritical(ex, "FATAL ERROR: Application host terminated unexpectedly during build or run.");
-    
+
     // Ensure the process exits with a non-zero code to signal failure
     Environment.ExitCode = 1;
 }

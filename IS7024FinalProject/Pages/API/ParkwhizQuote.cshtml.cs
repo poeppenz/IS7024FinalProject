@@ -15,14 +15,14 @@ public class ParkwhizQuoteModel : PageModel
         {
             return StatusCode((int)response.StatusCode, "Error fetching data from Parkwhiz API.");
         }
-
-        var json = await response.Content.ReadAsStringAsync();
-        //ViewData["ParkwhizJson"] = json;
+         
+        var ParkingSpot = await response.Content.ReadAsStringAsync();
+        //ViewData["ParkwhizJson"] = ParkingSpot;
 
         // Optionally, deserialize the JSON if you want to work with the data in C#
-        // var quotes = JsonSerializer.Deserialize<YourQuoteType>(json);
+        // var quotes = JsonSerializer.Deserialize<YourQuoteType>(ParkingSpot);
 
         // For now, just return the raw JSON as content
-        return Content(json, "application/json");
+        return Content(ParkingSpot, "application/json");
     }
 }

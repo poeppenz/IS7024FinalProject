@@ -93,6 +93,9 @@ try
     // Register the GetEventSearch minimal endpoint
     GetEventSearch.Map(app);
 
+    // Register the GetParkingSearch minimal endpoint
+    GetParkingSearch.Map(app);
+
     app.Run();
 }
 catch (Exception ex)

@@ -3,67 +3,58 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<link rel="stylesheet" href="~/css/StyleSheet.css" type="text/css" />
-<link rel="stylesheet" href="~/css/Print.css" type="text/css" />
-<link rel="stylesheet" href="~/css/Mobile.css" type="text/css" media="screen and (max-device-width: 480px)" />
 
 
-<body class="bg-light">
+<!-- OUTER CONTAINER TO CENTER THE CARD -->
+<div class="container py-5 d-flex justify-content-center">
 
-    <!-- OUTER CONTAINER TO CENTER THE CARD -->
-    <div class="container py-5 d-flex justify-content-center">
+    <!-- WHITE CARD -->
+    <div class="card shadow p-4" style="max-width: 900px; width: 100%; border-radius: 15px;">
 
-        <!-- WHITE CARD -->
-        <div class="card shadow p-4" style="max-width: 900px; width: 100%; border-radius: 15px;">
+        <!-- HERO SECTION -->
+        <h1 class="text-center mb-4 fw-bold">Event Parking</h1>
 
-            <!-- HERO SECTION -->
-            <h1 class="text-center mb-4 fw-bold">Event Parking</h1>
+        <!-- SEARCH BAR -->
+        <div class="mb-4 text-center">
+            <form action="/EventSearch" method="get" class="d-flex justify-content-center gap-2"
+                aria-label="Search events by name or location">
 
-            <!-- SEARCH BAR -->
-            <div class="mb-4 text-center">
-                <form action="/EventSearch"
-                      method="get"
-                      class="d-flex justify-content-center gap-2"
-                      aria-label="Search events by name or location">
-                      
-                    <!-- Autocomplete Container: Added position-relative to contain the dropdown -->
-                    <div class="position-relative w-50"> 
-                        <input type="search"
-                               id="autocomplete-input" 
-                               name="query"
-                               class="form-control"
-                               placeholder="Search an Event by Name or Location..."
-                               required 
-                               autocomplete="off" /> 
-                        
-                        <!-- Autocomplete Results Container: position-absolute makes it float over content -->
-                        <div id="autocomplete-results" 
-                             class="list-group position-absolute w-100 shadow-lg" 
-                             style="z-index: 1000;">
-                            <!-- Results will be injected here -->
-                        </div>
+                <!-- Autocomplete Container: Added position-relative to contain the dropdown -->
+                <div class="position-relative w-50">
+                    <input type="search" id="autocomplete-input" name="query" class="form-control"
+                        placeholder="Search an Event by Name or Location..." required autocomplete="off" />
+
+                    <!-- Autocomplete Results Container: position-absolute makes it float over content -->
+                    <div id="autocomplete-results" class="list-group position-absolute w-100 shadow-lg"
+                        style="z-index: 1000;">
+                        <!-- Results will be injected here -->
                     </div>
-
-                    <button type="submit" class="btn btn-primary px-4">Search</button>
-                </form>
-            </div>
-
-            <!-- DESCRIPTION -->
-            <p class="text-center mb-5" style="max-width: 700px; margin: auto;">
-                Locating a parking spot even before you reserve your events motivates you even more
-                not to fail to attend not only yourself but with your family as well.
-                Events could range from basketball, football, concerts, musicals etc.
-                Name it we have the parking spot for you.
-            </p>
-            <div id="content">
-                <!-- IMAGE -->
-                <div class="text-center mb-4">
-                    <img src="~/img/logo_300x300.png" style="max-width: 300px;" alt="The Event Parking Logo: A car on a platform." />
                 </div>
 
+                <button type="submit" class="btn btn-primary px-4">Search</button>
+            </form>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <p class="text-center mb-5" style="max-width: 700px; margin: auto;">
+            Locating a parking spot even before you reserve your events motivates you even more
+            not to fail to attend not only yourself but with your family as well.
+            Events could range from basketball, football, concerts, musicals etc.
+            Name it we have the parking spot for you.
+        </p>
+        <div id="content">
+            <!-- IMAGE -->
+            <div class="text-center mb-4">
+                <img src="~/img/logo_300x300.png" style="max-width: 300px;"
+                    alt="The Event Parking Logo: A car on a platform." />
             </div>
 
         </div>
 
     </div>
-</body>
+
+</div>
+
+@section Scripts {
+    <script src="~/Pages/Index.cshtml.js" asp-append-version="true"></script>
+}

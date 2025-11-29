@@ -9,7 +9,7 @@ public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;
     private readonly IAPIService _apiService;
-    
+
     // Inject the API Service
     public IndexModel(ILogger<IndexModel> logger, IAPIService apiService)
     {
@@ -21,9 +21,9 @@ public class IndexModel : PageModel
     {
         // Standard page load logic
     }
-    
+
     // Handler for the Autocomplete functionality (called via AJAX/fetch)
-    public async Task<JsonResult> OnGetAutocomplete(string term) 
+    public async Task<JsonResult> OnGetAutocomplete(string term)
     {
         if (string.IsNullOrWhiteSpace(term))
         {
@@ -39,7 +39,7 @@ public class IndexModel : PageModel
             _logger.LogError("API Error during Autocomplete for query '{Term}': {Message}", term, errorMessage);
             return new JsonResult(new List<Event>());
         }
-        
+
         // 2. Apply the hard limit (5) for autocomplete results 
         var topEvents = allEvents.Take(5).ToList();
 
@@ -50,7 +50,7 @@ public class IndexModel : PageModel
             id = e.Id,
             title = e.Title,
             venue = e.Venue.NameV2,
-            date = e.DatetimeLocal.ToString("MMM dd, yyyy"), 
+            date = e.DatetimeLocal.ToString("MMM dd, yyyy"),
             location = e.Venue.DisplayLocation
         });
 

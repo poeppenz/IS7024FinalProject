@@ -60,19 +60,19 @@ try
 {
     var app = builder.Build();
 
+    // Swagger only active in Development until packages are verified
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "EventParking v1");
+        // c.RoutePrefix = string.Empty; // uncomment to serve UI at app root
+    });
+
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
     {
         // Show detailed errors locally
         app.UseDeveloperExceptionPage();
-
-        // Swagger only active in Development until packages are verified
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint("/swagger/v1/swagger.json", "EventParking v1");
-            // c.RoutePrefix = string.Empty; // uncomment to serve UI at app root
-        });
     }
     else
     {

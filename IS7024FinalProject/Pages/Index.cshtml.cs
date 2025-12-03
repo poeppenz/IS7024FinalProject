@@ -1,8 +1,3 @@
-using IS7024FinalProject.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using IS7024FinalProject.DTOs; // Needed for Event DTO
-
 namespace IS7024FinalProject.Pages;
 
 public class IndexModel : PageModel

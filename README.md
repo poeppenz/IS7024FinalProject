@@ -1,5 +1,8 @@
 # EventParking
 
+## Website
+[EventParking website on Azure](https://eventparking-g2h3grd0e4cdgvag.eastus2-01.azurewebsites.net/)
+
 ## Introduction
 This repository contains the code and documentation for the IS7024 Final Project. The project will combine event API from [SeatGeek](https://seatgeek.com/) and parking data from [ParkWhiz](https://www.parkwhiz.com/) to show convenient parking locations near events.  
 
@@ -47,10 +50,10 @@ The SeatGeek ClientId can be specified with an environment variable, user secret
 - [x] Research and select APIs for event and parking data.
 - [X] Implement API integration for event data. SeatGeek
 - [X] Implement API integration for parking data. ParkWhiz
-- [ ] Finalize a project name. EventParking
-- [ ] Develop frontend components to display events and parking options.
-- [ ] Test the application for usability and performance.
-- [ ] Deploy the application to a Azure.
+- [X] Finalize a project name. EventParking
+- [X] Develop frontend components to display events and parking options.
+- [X] Test the application for usability and performance.
+- [X] Deploy the application to a Azure.
 ## Examples: 1.
 Event and parking search data are available and accessible.
 ### Assumptions
@@ -76,14 +79,14 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 - [X] Two external API sources
 - [ ] One AI from another group
 - [X] Common Github repository
-- [ ] Code in good form
+- [X] Code in good form
 - [ ] Do something extra
-- [ ] Code Review recommendations implemented and explained
-- [ ] Hosted in Azure
-- [ ] Show results of JSON service data in readable form
-- [ ] Produce data via REST/JSON with an OpenAPI or JSON Schema
+- [X] Code Review recommendations implemented and explained
+- [X] Hosted in Azure
+- [X] Show results of JSON service data in readable form
+- [X] Produce data via REST/JSON with an OpenAPI or JSON Schema
 - [ ] Gather data from user
-- [ ] Site looks good - CSS, images, theme
+- [X] Site looks good - CSS, images, theme
 - [ ] Accessible
 
 ## Data Sources

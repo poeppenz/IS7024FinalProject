@@ -77,17 +77,17 @@ Parking Spot: CRG west garage  spot A34 | Lot B - C14 | Lot A - B27
 
 ## Criteria checklist
 - [X] Two external API sources
-- [ ] One AI from another group
+- [ ] One API from another group
 - [X] Common Github repository
 - [X] Code in good form
-- [ ] Do something extra
+- [X] Do something extra
 - [X] Code Review recommendations implemented and explained
 - [X] Hosted in Azure
 - [X] Show results of JSON service data in readable form
 - [X] Produce data via REST/JSON with an OpenAPI or JSON Schema
-- [ ] Gather data from user
+- [X] Gather data from user
 - [X] Site looks good - CSS, images, theme
-- [ ] Accessible
+- [X] Accessible
 
 ## Data Sources
 

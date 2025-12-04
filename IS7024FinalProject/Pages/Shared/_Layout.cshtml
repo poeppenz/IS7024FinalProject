@@ -1,61 +1,66 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - EventParking</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/IS7024FinalProject.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/Print.css" asp-append-version="true" media="print"/>
-    <link rel="stylesheet" href="~/css/mobile.css" asp-append-version="true" media="screen and (max-device-width: 480px)" />
-</head>
-<body>
-    <div id="topnav">
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index"><img src="~/img/logo_black.png" alt="The Event Parking Logo: A car on a platform." width="50" /> EventParking </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/EventSearch" title="Just Events">
-                                <img src="~/img/parking.png" width="50"alt="Event Only Search" />
-                                </a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link text-dark" href="/swagger/index.html" target="_blank" title="Open API (Swagger)">
-                                    <img src="~/img/swagger-icon-250x250.png" alt="Open API Swagger" width="50" />
-                                </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    </div>
-    <div id="content" class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Event Parking
+﻿@Html.Raw("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">")
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - EventParking</title>
+        <script type="importmap"></script>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/IS7024FinalProject.styles.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/StyleSheet.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/Print.css" asp-append-version="true" media="print" />
+        <link rel="stylesheet" href="~/css/mobile.css" asp-append-version="true"
+            media="screen and (max-device-width: 480px)" />
+    </head>
+    <body>
+        <div id="topnav">
+            <header>
+                <nav
+                    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                    <div class="container">
+                        <a class="navbar-brand" asp-area="" asp-page="/Index"><img src="~/img/logo_black.png"
+                                alt="The Event Parking Logo: A car on a platform." width="50" /> EventParking </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/EventSearch" title="Just Events">
+                                        <img src="~/img/parking.png" width="50" alt="Event Only Search" />
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="/swagger/index.html" target="_blank"
+                                        title="Open API (Swagger)">
+                                        <img src="~/img/swagger-icon-250x250.png" alt="Open API Swagger" width="50" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
         </div>
-    </footer>
+        <div id="content" class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2025 - Event Parking
+            </div>
+        </footer>
 
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
 </html>

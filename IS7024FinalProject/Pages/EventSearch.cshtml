@@ -7,34 +7,31 @@
     ViewData["Title"] = "Event Search";
 }
 
-
 <div class="container my-5">
     <div class="text-center mb-4">
         <h1 class="display-4 text-primary">Event Finder</h1>
         <p class="lead">Search the SeatGeek API for events near you.</p>
     </div>
-
     <!-- Search Form Section -->
-
     <div id="event-search-area" class="row justify-content-center mb-5">
         <div class="col-12 col-md-10 col-lg-10">
             <form method="get" class="d-flex" role="search">
-                <input class="form-control form-control-lg me-2 rounded-pill flex-grow-1" type="search" id="search-input" name="Query"
-                       placeholder="Search for a team, artist, or event (e.g., Indiana basketball)"
-                       value="@Model.Query" aria-label="Event Search">
+                <input class="form-control form-control-lg me-2 rounded-pill flex-grow-1" type="search"
+                    id="search-input" name="Query"
+                    placeholder="Search for a team, artist, or event (e.g., Indiana basketball)" value="@Model.Query"
+                    aria-label="Event Search" />
                 <button class="btn btn-lg btn-primary rounded-pill" type="submit">Search</button>
             </form>
         </div>
     </div>
-
     <!-- Event Results Container -->
-
     <div id="eventcontainer">
         @if (Model.SearchPerformed && Model.Events.Count == 0)
         {
             <div class="alert alert-warning text-center" role="alert">
                 <h4 class="alert-heading">No Events Found!</h4>
-                <p>We couldn't find any events matching your search for "<strong>@Model.Query</strong>". Please try a different query.</p>
+                <p>We couldn't find any events matching your search for "<strong>@Model.Query</strong>". Please try a
+                    different query.</p>
             </div>
         }
         else if (Model.Events != null && Model.Events.Count > 0)
@@ -42,14 +39,10 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 @foreach (var eventItem in Model.Events)
                 {
-
                     var parkingLink = $"/ParkingSearch?eventId={eventItem.Id}";
-
                     <div class="col">
                         <a href="@parkingLink" class="text-decoration-none">
                             <div class="card h-100">
-
-
                                 <!-- WHO: Implicitly the headliner/summary -->
                                 <div class="card-header text-center">
                                     @eventItem.GetPerformersSummary()
@@ -72,10 +65,8 @@
 
                                     <!-- Performer Image placed inside the card body, styled as a wide rectangle with rounded corners -->
                                     <div class="my-3">
-                                        <img src="@eventItem.GetPrimaryPerformerImageUrl()"
-                                             alt="@eventItem.Title"
-                                             class="rounded-3 border border-2 border-primary shadow-sm w-100"
-                                             style="height: 150px; object-fit: cover;">
+                                        <img src="@eventItem.GetPrimaryPerformerImageUrl()" alt="@eventItem.Title"
+                                            class="rounded-3 border border-2 border-primary shadow-sm w-100 performer-image" />
                                     </div>
 
                                     <!-- WHERE: Location and Venue -->
@@ -98,7 +89,5 @@
                 }
             </div>
         }
-
     </div>
-
 </div>

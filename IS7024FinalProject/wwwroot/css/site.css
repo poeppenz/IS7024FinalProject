@@ -29,7 +29,13 @@ body {
 
 h1 {
     font-family: Arial, sans-serif;
-    font-size: 40px;
+    display: block;
+    font-size: 2em;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
 }
 
 h2 {
@@ -152,6 +158,19 @@ h2 {
     cursor: pointer;
 }
 
+#navigation {
+    background-color: #F6FEFE;
+    border: solid;
+    vertical-align: top;
+    margin-top: 0px;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    z-index: 100;
+}
+
 #topnav {
     background-color: #258cfb;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -204,4 +223,25 @@ h2 {
 
 .footer-no-cursor {
     cursor: default;
+}
+
+input[type=submit] {
+    background-color: #F6FEFE;
+    border: none;
+    color: aliceblue;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 4px;
+    cursor: pointer;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3em;
+   
+    color: #0343C4;
+}
+
+#printonly {
+    display: none;
 }
